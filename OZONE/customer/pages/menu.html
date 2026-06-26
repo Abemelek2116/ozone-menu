@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZONE | Digital Menu</title>
+    <meta name="description" content="Luxury Digital Menu for OZONE Cafe Restaurant & Bar">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../assets/css/menustyles.css">
+    <link rel="stylesheet" href="../assets/css/menuanimations.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+
+<body>
+
+    <div id="menuLoader" class="luxury-loader hidden">
+        <div class="loader-ring"></div>
+    </div>
+
+    <div class="scroll-progress"></div>
+
+    <!-- NAVBAR -->
+    <nav class="glass-navbar">
+        <a href="../Index.html" class="logo">OZONE</a>
+        <ul>
+            <li><a href="../Index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="#" data-i18n="nav.experience">Experience</a></li>
+            <li><a href="menu.html" class="active" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="#" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="#" data-i18n="nav.reserve">Reserve</a></li>
+        </ul>
+        <div class="nav-right">
+            <button id="themeToggle"><i class="fas fa-moon"></i></button>
+            <button id="languageSwitcher">EN | አማ</button>
+            <button id="cartButton">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartCount">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="menu-hero">
+        <video autoplay muted loop playsinline>
+            <source src="../assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span data-i18n="mp.hero.span">Luxury Digital Menu</span>
+            <h1 data-i18n="mp.hero.h1">Discover Every Signature Dish</h1>
+            <p data-i18n="mp.hero.p">Curated by our chefs. Crafted for unforgettable moments.</p>
+            <a href="#menuSection" class="btn-primary" data-i18n="mp.hero.btn">Explore Menu</a>
+        </div>
+    </header>
+
+    <!-- FILTERS -->
+    <section class="menu-filters">
+        <div class="filter-row">
+            <div class="filter-search-wrap">
+                <i class="fas fa-search"></i>
+                <input id="menuSearch" type="text" data-i18n="mp.search" placeholder="Search dishes, ingredients...">
+            </div>
+            <select id="sortMenu">
+                <option value="featured"    data-i18n="mp.sort.featured">Featured</option>
+                <option value="alphabetical" data-i18n="mp.sort.alpha">A → Z</option>
+                <option value="popular"     data-i18n="mp.sort.popular">Most Popular</option>
+                <option value="price-low"   data-i18n="mp.sort.priceup">Price ↑</option>
+                <option value="price-high"  data-i18n="mp.sort.pricedn">Price ↓</option>
+            </select>
+        </div>
+        <div class="filter-row filter-row--advanced">
+            <div class="filter-field">
+                <label data-i18n="mp.filter.minp">Min Price</label>
+                <input id="priceMin" type="number" placeholder="0">
+            </div>
+            <div class="filter-field">
+                <label data-i18n="mp.filter.maxp">Max Price</label>
+                <input id="priceMax" type="number" placeholder="Any">
+            </div>
+            <div class="filter-field">
+                <label data-i18n="mp.filter.minc">Min Cal</label>
+                <input id="caloriesMin" type="number" placeholder="0">
+            </div>
+            <div class="filter-field">
+                <label data-i18n="mp.filter.maxc">Max Cal</label>
+                <input id="caloriesMax" type="number" placeholder="Any">
+            </div>
+            <div class="filter-toggles">
+                <label class="toggle-chip"><input id="featuredFilter" type="checkbox"> <span data-i18n="mp.filter.feat">Featured</span></label>
+                <label class="toggle-chip"><input id="chefFilter"      type="checkbox"> <span data-i18n="mp.filter.chef">Chef Picks</span></label>
+                <label class="toggle-chip"><input id="seasonalFilter"  type="checkbox"> <span data-i18n="mp.filter.seas">Seasonal</span></label>
+                <label class="toggle-chip"><input id="specialFilter"   type="checkbox"> <span data-i18n="mp.filter.spec">Daily Specials</span></label>
+                <label class="toggle-chip"><input id="availabilityFilter" type="checkbox" checked> <span data-i18n="mp.filter.avail">Available Only</span></label>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section id="menuSection" class="menu-page">
+        <div id="categoryContainer" class="category-wrapper"></div>
+
+        <section class="all-menu">
+            <div class="section-title">
+                <span data-i18n="mp.menu.span">Complete Menu</span>
+                <h2 data-i18n="mp.menu.h2">Explore Everything</h2>
+            </div>
+            <div id="menuContainer" class="menu-grid"></div>
+            <div id="pagination"></div>
+            <div id="noResults"></div>
+        </section>
+    </section>
+
+    <!-- CART DRAWER -->
+    <aside id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h2 data-i18n="mp.cart.title">Your Order</h2>
+            <button id="closeCart">×</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-summary">
+            <div>
+                <span data-i18n="mp.cart.sub">Subtotal</span>
+                <span id="cartSubtotal"></span>
+            </div>
+            <div>
+                <span data-i18n="mp.cart.vat">VAT</span>
+                <span id="cartTax"></span>
+            </div>
+            <div>
+                <span data-i18n="mp.cart.service">Service</span>
+                <span id="cartService"></span>
+            </div>
+            <div class="grand-total">
+                <strong data-i18n="mp.cart.total">Total</strong>
+                <strong id="cartTotal"></strong>
+            </div>
+            <a href="checkout.html" id="checkoutButton" class="btn-primary" data-i18n="mp.cart.checkout">Proceed To Checkout</a>
+        </div>
+    </aside>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">OZONE</div>
+        <p data-i18n="mp.footer.p">Luxury Cafe • Restaurant • Bar</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/animations.js"></script>
+    <script src="../assets/js/menutheme.js"></script>
+    <script src="../assets/js/menucursor.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/filters.js"></script>
+    <script src="../assets/js/menu.js"></script>
+    <script src="../assets/js/menumain.js"></script>
+
+</body>
+</html>

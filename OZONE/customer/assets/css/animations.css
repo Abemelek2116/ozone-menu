@@ -1,0 +1,1844 @@
+/*=========================================================
+    OZONE
+
+    animations.css
+
+    Luxury Motion System
+
+==========================================================*/
+
+
+
+/*=========================================================
+    FADE IN
+==========================================================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(80px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+
+
+.fade-up{
+
+    animation:
+
+        fadeUp
+
+        1s ease forwards;
+
+}
+
+
+
+
+
+/*=========================================================
+    FADE DOWN
+==========================================================*/
+
+@keyframes fadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(-80px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+
+
+.fade-down{
+
+    animation:
+
+        fadeDown
+
+        1s ease forwards;
+
+}
+
+
+
+
+
+/*=========================================================
+    FADE LEFT
+==========================================================*/
+
+@keyframes fadeLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(-120px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0);
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+    FADE RIGHT
+==========================================================*/
+
+@keyframes fadeRight{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(120px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0);
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+    ZOOM IN
+==========================================================*/
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+    SLOW FLOAT
+==========================================================*/
+
+@keyframes float{
+
+    0%{
+
+        transform:
+
+            translateY(0px);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateY(-20px);
+
+    }
+
+    100%{
+
+        transform:
+
+            translateY(0px);
+
+    }
+
+}
+
+
+
+.floating{
+
+    animation:
+
+        float
+
+        6s ease-in-out infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    FLOAT HORIZONTAL
+==========================================================*/
+
+@keyframes floatHorizontal{
+
+    0%{
+
+        transform:
+
+            translateX(0);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateX(15px);
+
+    }
+
+    100%{
+
+        transform:
+
+            translateX(0);
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+    ROTATE
+==========================================================*/
+
+@keyframes rotateSlow{
+
+    from{
+
+        transform:
+
+            rotate(0);
+
+    }
+
+    to{
+
+        transform:
+
+            rotate(360deg);
+
+    }
+
+}
+
+
+
+.rotate{
+
+    animation:
+
+        rotateSlow
+
+        30s linear infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    PULSE
+==========================================================*/
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+    GOLD SHIMMER
+==========================================================*/
+
+@keyframes shimmer{
+
+    0%{
+
+        background-position:
+
+            -400px 0;
+
+    }
+
+    100%{
+
+        background-position:
+
+            400px 0;
+
+    }
+
+}
+
+
+
+.shimmer{
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.35),
+
+            transparent
+
+        );
+
+    background-size:400px;
+
+    animation:
+
+        shimmer
+
+        2.5s linear infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    BUTTON RIPPLE
+==========================================================*/
+
+@keyframes ripple{
+
+    from{
+
+        transform:scale(0);
+
+        opacity:.7;
+
+    }
+
+    to{
+
+        transform:scale(4);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+    GLOW
+==========================================================*/
+
+@keyframes glow{
+
+    0%{
+
+        box-shadow:
+
+            0 0 0 rgba(212,175,55,.2);
+
+    }
+
+    50%{
+
+        box-shadow:
+
+            0 0 45px rgba(212,175,55,.55);
+
+    }
+
+    100%{
+
+        box-shadow:
+
+            0 0 0 rgba(212,175,55,.2);
+
+    }
+
+}
+
+
+
+.glow{
+
+    animation:
+
+        glow
+
+        2.5s infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    HERO TITLE
+==========================================================*/
+
+.hero h1{
+
+    animation:
+
+        fadeUp
+
+        1.4s ease;
+
+}
+
+
+
+
+
+.hero-tag{
+
+    animation:
+
+        fadeDown
+
+        1.2s ease;
+
+}
+
+
+
+
+
+.hero-buttons{
+
+    animation:
+
+        fadeUp
+
+        1.8s ease;
+
+}
+
+
+
+
+
+/*=========================================================
+    SCROLL INDICATOR
+==========================================================*/
+
+@keyframes scrollDots{
+
+    0%{
+
+        opacity:.2;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:
+
+            translateY(12px);
+
+    }
+
+    100%{
+
+        opacity:.2;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+
+
+.scroll-indicator span{
+
+    animation:
+
+        scrollDots
+
+        1.4s infinite;
+
+}
+
+
+
+.scroll-indicator span:nth-child(2){
+
+    animation-delay:.25s;
+
+}
+
+
+
+.scroll-indicator span:nth-child(3){
+
+    animation-delay:.5s;
+
+}
+
+
+
+
+
+/*=========================================================
+    LOADER LOGO
+==========================================================*/
+
+@keyframes loaderReveal{
+
+    from{
+
+        letter-spacing:50px;
+
+        opacity:0;
+
+    }
+
+    to{
+
+        letter-spacing:12px;
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+.loader-logo{
+
+    animation:
+
+        loaderReveal
+
+        1.8s ease;
+
+}
+
+
+
+
+
+/*=========================================================
+    LOADER BAR
+==========================================================*/
+
+@keyframes loaderBar{
+
+    from{
+
+        width:0;
+
+    }
+
+    to{
+
+        width:100%;
+
+    }
+
+}
+
+
+
+.loader-line span{
+
+    animation:
+
+        loaderBar
+
+        2.8s ease forwards;
+
+}
+
+
+
+
+
+/*=========================================================
+    CURSOR SCALE
+==========================================================*/
+
+.cursor-active{
+
+    transform:
+
+        translate(-50%,-50%)
+
+        scale(1.8);
+
+}
+/*=========================================================
+    AURORA BACKGROUND
+=========================================================*/
+
+@keyframes auroraFlow{
+
+    0%{
+
+        transform:
+            translateX(-8%)
+            translateY(-5%)
+            rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:
+            translateX(8%)
+            translateY(5%)
+            rotate(180deg);
+
+    }
+
+    100%{
+
+        transform:
+            translateX(-8%)
+            translateY(-5%)
+            rotate(360deg);
+
+    }
+
+}
+
+.gradient-layer{
+
+    animation:
+
+        auroraFlow
+
+        30s linear infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    FLOATING ORBS
+=========================================================*/
+
+@keyframes orbFloat{
+
+    0%{
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-40px)
+            scale(1.1);
+
+    }
+
+    100%{
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+.orb-one{
+
+    animation:
+
+        orbFloat
+
+        16s ease-in-out infinite;
+
+}
+
+.orb-two{
+
+    animation:
+
+        orbFloat
+
+        20s ease-in-out infinite reverse;
+
+}
+
+.orb-three{
+
+    animation:
+
+        orbFloat
+
+        24s ease-in-out infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    STEAM
+=========================================================*/
+
+@keyframes steam{
+
+    0%{
+
+        opacity:.1;
+
+        transform:
+            translateY(0)
+            scale(.8);
+
+    }
+
+    50%{
+
+        opacity:.35;
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translateY(-90px)
+            scale(1.8);
+
+    }
+
+}
+
+.steam-animation{
+
+    animation:
+
+        steam
+
+        4s ease-in-out infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    COCKTAIL BUBBLES
+=========================================================*/
+
+@keyframes bubble{
+
+    from{
+
+        transform:
+
+            translateY(0)
+
+            scale(.6);
+
+        opacity:.7;
+
+    }
+
+    to{
+
+        transform:
+
+            translateY(-320px)
+
+            scale(1.2);
+
+        opacity:0;
+
+    }
+
+}
+
+.bubble-container span{
+
+    animation:
+
+        bubble
+
+        5s linear infinite;
+
+}
+
+.bubble-container span:nth-child(2){
+
+    animation-delay:1s;
+
+}
+
+.bubble-container span:nth-child(3){
+
+    animation-delay:2.3s;
+
+}
+
+.bubble-container span:nth-child(4){
+
+    animation-delay:3.2s;
+
+}
+
+
+
+
+
+/*=========================================================
+    PARTICLES
+=========================================================*/
+
+@keyframes particleFloat{
+
+    from{
+
+        transform:
+
+            translateY(50px);
+
+        opacity:0;
+
+    }
+
+    30%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+
+            translateY(-800px);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+    BACKGROUND BREATHING
+=========================================================*/
+
+@keyframes backgroundPulse{
+
+    0%{
+
+        filter:brightness(100%);
+
+    }
+
+    50%{
+
+        filter:brightness(110%);
+
+    }
+
+    100%{
+
+        filter:brightness(100%);
+
+    }
+
+}
+
+.hero{
+
+    animation:
+
+        backgroundPulse
+
+        10s ease-in-out infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    GLASS SHINE
+=========================================================*/
+
+@keyframes glassShine{
+
+    from{
+
+        transform:
+
+            translateX(-120%);
+
+    }
+
+    to{
+
+        transform:
+
+            translateX(220%);
+
+    }
+
+}
+
+.story-image::before{
+
+    overflow:hidden;
+
+}
+
+.story-image::after{
+
+    animation:
+
+        glassShine
+
+        6s linear infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    CARD LIFT
+=========================================================*/
+
+.signature-card,
+.preview-card,
+.award-card,
+.stat-card{
+
+    transition:
+
+        transform .45s,
+
+        box-shadow .45s,
+
+        border-color .45s;
+
+}
+
+.signature-card:hover,
+.preview-card:hover,
+.award-card:hover,
+.stat-card:hover{
+
+    transform:
+
+        translateY(-12px)
+
+        rotateX(4deg);
+
+}
+
+
+
+
+
+/*=========================================================
+    IMAGE REVEAL
+=========================================================*/
+
+.story-image img{
+
+    transition:
+
+        transform 1.2s ease,
+
+        filter .8s ease;
+
+}
+
+.story-image:hover img{
+
+    transform:
+
+        scale(1.08);
+
+    filter:
+
+        brightness(110%)
+
+        contrast(110%);
+
+}
+
+
+
+
+
+/*=========================================================
+    BUTTON SHIMMER
+=========================================================*/
+
+.btn-primary{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn-primary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    transform:skewX(-25deg);
+
+    background:
+
+        rgba(255,255,255,.35);
+
+}
+
+.btn-primary:hover::before{
+
+    animation:
+
+        glassShine
+
+        .8s ease;
+
+}
+
+
+
+
+
+/*=========================================================
+    HERO VIDEO
+=========================================================*/
+
+#heroVideo{
+
+    animation:
+
+        zoomVideo
+
+        18s linear infinite alternate;
+
+}
+
+@keyframes zoomVideo{
+
+    from{
+
+        transform:
+
+            scale(1.05);
+
+    }
+
+    to{
+
+        transform:
+
+            scale(1.18);
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+    SCROLL ARROW
+=========================================================*/
+
+@keyframes bounceArrow{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(15px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.scroll-indicator{
+
+    animation:
+
+        bounceArrow
+
+        2s ease infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    FADE MASK
+=========================================================*/
+
+.reveal-mask{
+
+    overflow:hidden;
+
+}
+
+.reveal-mask>*{
+
+    animation:
+
+        fadeUp
+
+        1s ease forwards;
+
+}
+
+
+
+
+
+/*=========================================================
+    HOVER GLOW
+=========================================================*/
+
+.story-button:hover,
+
+.btn-secondary:hover{
+
+    box-shadow:
+
+        0 20px 60px
+
+        rgba(212,175,55,.25);
+
+}
+
+
+
+
+
+/*=========================================================
+    NOISE MOVEMENT
+=========================================================*/
+
+@keyframes noiseMove{
+
+    0%{
+
+        transform:translate(0,0);
+
+    }
+
+    25%{
+
+        transform:translate(-8px,6px);
+
+    }
+
+    50%{
+
+        transform:translate(5px,-4px);
+
+    }
+
+    75%{
+
+        transform:translate(8px,5px);
+
+    }
+
+    100%{
+
+        transform:translate(0,0);
+
+    }
+
+}
+
+.noise-overlay{
+
+    animation:
+
+        noiseMove
+
+        .35s steps(2) infinite;
+
+}
+
+
+
+
+
+/*=========================================================
+    PAGE TRANSITION
+=========================================================*/
+
+@keyframes pageFade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+body{
+
+    animation:
+
+        pageFade
+
+        .8s ease;
+
+}
+/*=========================================================
+    PERFORMANCE OPTIMIZATION
+=========================================================*/
+
+/*
+    Hint the browser which properties
+    are expected to animate.
+*/
+
+.hero,
+.story-image img,
+.signature-card,
+.preview-card,
+.award-card,
+.stat-card,
+.btn-primary,
+.btn-secondary,
+.cursor-dot,
+.cursor-outline,
+.floating-orb,
+.gradient-layer,
+.noise-overlay{
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+
+
+/*=========================================================
+    GPU ACCELERATION
+=========================================================*/
+
+.gpu{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    perspective:1000px;
+
+}
+
+
+
+/*=========================================================
+    MAGNETIC BUTTON STATE
+=========================================================*/
+
+.magnetic{
+
+    transition:
+
+        transform .18s ease-out,
+
+        box-shadow .35s ease;
+
+}
+
+.magnetic:hover{
+
+    box-shadow:
+
+        0 25px 60px rgba(212,175,55,.30);
+
+}
+
+
+
+/*=========================================================
+    RIPPLE EFFECT
+=========================================================*/
+
+.ripple{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    transform:scale(0);
+
+    pointer-events:none;
+
+    background:
+
+        rgba(255,255,255,.45);
+
+    animation:
+
+        rippleEffect
+
+        .8s linear;
+
+}
+
+@keyframes rippleEffect{
+
+    to{
+
+        transform:scale(10);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    TEXT REVEAL
+=========================================================*/
+
+.reveal-text{
+
+    overflow:hidden;
+
+}
+
+.reveal-text span{
+
+    display:inline-block;
+
+    transform:
+
+        translateY(120%);
+
+}
+
+
+
+/*=========================================================
+    LETTER REVEAL
+=========================================================*/
+
+.reveal-letter{
+
+    display:inline-block;
+
+    opacity:0;
+
+    transform:
+
+        translateY(40px)
+
+        rotateX(90deg);
+
+}
+
+
+
+/*=========================================================
+    IMAGE PARALLAX PREP
+=========================================================*/
+
+.parallax-image{
+
+    overflow:hidden;
+
+}
+
+.parallax-image img{
+
+    transform:scale(1.15);
+
+}
+
+
+
+/*=========================================================
+    MOUSE SPOTLIGHT
+=========================================================*/
+
+#mouseSpotlight{
+
+    position:fixed;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    mix-blend-mode:screen;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(212,175,55,.10),
+
+            transparent 70%
+
+        );
+
+    transform:
+
+        translate(-50%,-50%);
+
+    opacity:0;
+
+    transition:
+
+        opacity .3s ease;
+
+}
+
+
+
+/*=========================================================
+    CURSOR STATES
+=========================================================*/
+
+.cursor-grow{
+
+    transform:
+
+        translate(-50%,-50%)
+
+        scale(2.2);
+
+}
+
+.cursor-hidden{
+
+    opacity:0;
+
+}
+
+
+
+/*=========================================================
+    NAVBAR APPEAR
+=========================================================*/
+
+@keyframes navReveal{
+
+    from{
+
+        transform:
+
+            translateY(-100%);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:
+
+            translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+header{
+
+    animation:
+
+        navReveal
+
+        1s ease;
+
+}
+
+
+
+/*=========================================================
+    LOADER EXIT
+=========================================================*/
+
+@keyframes loaderExit{
+
+    to{
+
+        opacity:0;
+
+        visibility:hidden;
+
+    }
+
+}
+
+.loader-hide{
+
+    animation:
+
+        loaderExit
+
+        .9s ease forwards;
+
+}
+
+
+
+/*=========================================================
+    BUTTON PRESS
+=========================================================*/
+
+.btn-primary:active,
+.btn-secondary:active{
+
+    transform:
+
+        scale(.96);
+
+}
+
+
+
+/*=========================================================
+    ICON FLOAT
+=========================================================*/
+
+.social-icon i,
+.footer-social i,
+.nav-right i{
+
+    transition:
+
+        transform .35s ease,
+
+        color .35s ease;
+
+}
+
+.social-icon:hover i,
+.footer-social:hover i{
+
+    transform:
+
+        translateY(-6px);
+
+    color:var(--gold);
+
+}
+
+
+
+/*=========================================================
+    GOLD LINE ANIMATION
+=========================================================*/
+
+.gold-line{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.gold-line::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-100%;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(212,175,55,.45),
+
+            transparent
+
+        );
+
+}
+
+.gold-line:hover::after{
+
+    animation:
+
+        glassShine
+
+        .8s linear;
+
+}
+
+
+
+/*=========================================================
+    HOVER TILT FOUNDATION
+=========================================================*/
+
+.tilt{
+
+    transform-style:preserve-3d;
+
+    transition:
+
+        transform .25s ease;
+
+}
+
+
+
+/*=========================================================
+    CARD GLOW
+=========================================================*/
+
+.card-glow:hover{
+
+    border-color:
+
+        rgba(212,175,55,.35);
+
+}
+
+
+
+/*=========================================================
+    FADE STAGGER
+=========================================================*/
+
+.stagger>*{
+
+    opacity:0;
+
+}
+
+
+
+/*=========================================================
+    SECTION REVEAL STATE
+=========================================================*/
+
+.section-hidden{
+
+    opacity:0;
+
+    transform:
+
+        translateY(80px);
+
+}
+
+.section-visible{
+
+    opacity:1;
+
+    transform:
+
+        translateY(0);
+
+    transition:
+
+        opacity .9s ease,
+
+        transform .9s ease;
+
+}
+
+
+
+/*=========================================================
+    REDUCED MOTION
+=========================================================*/
+
+@media (prefers-reduced-motion: reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}

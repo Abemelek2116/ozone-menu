@@ -1,0 +1,61 @@
+[
+  {
+    "id": "all",
+    "name": "All Experiences",
+    "label": "OZONE Universe",
+    "icon": "grid",
+    "description": "Explore the full OZONE culinary universe.",
+    "color": "#D4AF37",
+    "storyOrder": 0
+  },
+
+  {
+    "id": "cafe",
+    "name": "Cafe",
+    "label": "Morning Rituals",
+    "icon": "coffee",
+    "description": "Artisan coffee, pastries, and calm luxury mornings.",
+    "color": "#C89B3C",
+    "storyOrder": 1
+  },
+
+  {
+    "id": "restaurant",
+    "name": "Restaurant",
+    "label": "Fine Dining",
+    "icon": "utensils",
+    "description": "Signature dishes crafted by world-class chefs.",
+    "color": "#1AA37A",
+    "storyOrder": 2
+  },
+
+  {
+    "id": "bar",
+    "name": "Bar",
+    "label": "Evening Experience",
+    "icon": "wine-glass",
+    "description": "Cocktails, ambiance, and night luxury energy.",
+    "color": "#8A6F3E",
+    "storyOrder": 3
+  },
+
+  {
+    "id": "dessert",
+    "name": "Desserts",
+    "label": "Sweet Moments",
+    "icon": "cake",
+    "description": "Handcrafted desserts and indulgent creations.",
+    "color": "#E7C6A3",
+    "storyOrder": 4
+  },
+
+  {
+    "id": "signature",
+    "name": "Signature",
+    "label": "Chef’s Masterpieces",
+    "icon": "star",
+    "description": "The most iconic dishes of OZONE.",
+    "color": "#D4AF37",
+    "storyOrder": 5
+  }
+]

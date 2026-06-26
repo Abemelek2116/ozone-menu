@@ -1,0 +1,1917 @@
+/*=========================================================
+    OZONE
+
+    responsive.css
+
+    Responsive Layout System
+
+==========================================================*/
+
+
+
+/*=========================================================
+    LARGE DESKTOP
+    1600px+
+==========================================================*/
+
+@media (min-width:1600px){
+
+    .container{
+
+        width:min(1500px,90%);
+
+    }
+
+    h1{
+
+        font-size:8rem;
+
+    }
+
+    h2{
+
+        font-size:5rem;
+
+    }
+
+    section{
+
+        padding:180px 0;
+
+    }
+
+    .hero-content{
+
+        max-width:1050px;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    DESKTOP
+==========================================================*/
+
+@media (max-width:1400px){
+
+    .container{
+
+        width:92%;
+
+    }
+
+    .experience-grid,
+
+    .chef-grid,
+
+    .story-section .container{
+
+        gap:60px;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    LAPTOP
+==========================================================*/
+
+@media (max-width:1200px){
+
+    :root{
+
+        --section-space:110px;
+
+    }
+
+    #navbar{
+
+        padding:16px 25px;
+
+    }
+
+    .nav-links{
+
+        gap:30px;
+
+    }
+
+    h1{
+
+        font-size:clamp(3.5rem,7vw,6rem);
+
+    }
+
+    h2{
+
+        font-size:clamp(2.4rem,5vw,4rem);
+
+    }
+
+    .experience-grid,
+
+    .chef-grid,
+
+    .story-section .container{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:50px;
+
+    }
+
+    .story-image img{
+
+        height:600px;
+
+    }
+
+    .experience-image img{
+
+        min-height:560px;
+
+    }
+
+    .preview-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    .award-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:
+
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/*=========================================================
+    SMALL LAPTOP
+==========================================================*/
+
+@media (max-width:1100px){
+
+    .nav-links{
+
+        gap:22px;
+
+    }
+
+    .hero-buttons{
+
+        gap:18px;
+
+    }
+
+    .preview-card img{
+
+        height:340px;
+
+    }
+
+    .counter{
+
+        font-size:3rem;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    MENU BUTTON APPEARS
+==========================================================*/
+
+@media (max-width:1024px){
+
+    .mobile-menu{
+
+        display:flex;
+
+    }
+
+    .nav-links{
+
+        display:none;
+
+    }
+
+}
+/*=========================================================
+    TABLET LANDSCAPE
+    992px
+=========================================================*/
+
+@media (max-width:992px){
+
+    :root{
+
+        --section-space:100px;
+
+    }
+
+    .container{
+
+        width:92%;
+
+    }
+
+    h1{
+
+        font-size:clamp(3.2rem,7vw,5rem);
+
+    }
+
+    h2{
+
+        font-size:clamp(2.2rem,5vw,3.6rem);
+
+    }
+
+    p{
+
+        font-size:1rem;
+
+    }
+
+    /*------------------------------------
+        Navigation
+    ------------------------------------*/
+
+    #navbar{
+
+        padding:15px 22px;
+
+    }
+
+    .logo a{
+
+        font-size:1.7rem;
+
+        letter-spacing:4px;
+
+    }
+
+    .nav-right{
+
+        gap:12px;
+
+    }
+
+    /*------------------------------------
+        Hero
+    ------------------------------------*/
+
+    .hero{
+
+        min-height:95vh;
+
+    }
+
+    .hero-content{
+
+        width:92%;
+
+    }
+
+    .hero-buttons{
+
+        flex-wrap:wrap;
+
+        gap:18px;
+
+    }
+
+    .typing-container{
+
+        min-height:42px;
+
+    }
+
+    /*------------------------------------
+        Experience
+    ------------------------------------*/
+
+    .experience-grid{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+    }
+
+    .experience-right{
+
+        order:-1;
+
+    }
+
+    .experience-image img{
+
+        min-height:520px;
+
+    }
+
+    /*------------------------------------
+        Story Sections
+    ------------------------------------*/
+
+    .story-section{
+
+        min-height:auto;
+
+    }
+
+    .story-section .container{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+    }
+
+    .restaurant-story .container{
+
+        direction:ltr;
+
+    }
+
+    .story-content{
+
+        text-align:center;
+
+    }
+
+    .story-content p{
+
+        margin-left:auto;
+
+        margin-right:auto;
+
+    }
+
+    .story-content::before{
+
+        margin-left:auto;
+
+        margin-right:auto;
+
+    }
+
+    .story-image img{
+
+        height:560px;
+
+    }
+
+    /*------------------------------------
+        Chef
+    ------------------------------------*/
+
+    .chef-grid{
+
+        grid-template-columns:1fr;
+
+        gap:60px;
+
+    }
+
+    .chef-content{
+
+        text-align:center;
+
+    }
+
+    /*------------------------------------
+        Menu Preview
+    ------------------------------------*/
+
+    .preview-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    /*------------------------------------
+        Awards
+    ------------------------------------*/
+
+    .award-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    /*------------------------------------
+        Stats
+    ------------------------------------*/
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    /*------------------------------------
+        Instagram
+    ------------------------------------*/
+
+    .instagram-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/*=========================================================
+    TABLET PORTRAIT
+    820px
+=========================================================*/
+
+@media (max-width:820px){
+
+    :root{
+
+        --section-space:90px;
+
+    }
+
+    h1{
+
+        font-size:clamp(3rem,7vw,4.4rem);
+
+    }
+
+    h2{
+
+        font-size:clamp(2rem,5vw,3rem);
+
+    }
+
+    .section-header{
+
+        margin-bottom:60px;
+
+    }
+
+    /*------------------------------------
+        Hero
+    ------------------------------------*/
+
+    .hero{
+
+        padding-top:120px;
+
+    }
+
+    .hero-content{
+
+        text-align:center;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .btn-primary,
+
+    .btn-secondary{
+
+        width:100%;
+
+        max-width:300px;
+
+        padding:16px 24px;
+
+    }
+
+    /*------------------------------------
+        Experience
+    ------------------------------------*/
+
+    .lead-text{
+
+        font-size:1.2rem;
+
+    }
+
+    .experience-image img{
+
+        min-height:460px;
+
+    }
+
+    /*------------------------------------
+        Story
+    ------------------------------------*/
+
+    .story-image img{
+
+        height:500px;
+
+    }
+
+    .story-content h2{
+
+        margin-bottom:25px;
+
+    }
+
+    /*------------------------------------
+        Cards
+    ------------------------------------*/
+
+    .preview-card img{
+
+        height:300px;
+
+    }
+
+    .preview-content{
+
+        padding:28px;
+
+    }
+
+    .award-card{
+
+        padding:45px 25px;
+
+    }
+
+    .stat-card{
+
+        padding:40px 25px;
+
+    }
+
+    .counter{
+
+        font-size:2.7rem;
+
+    }
+
+    /*------------------------------------
+        Reservation
+    ------------------------------------*/
+
+    .reservation-cta{
+
+        min-height:70vh;
+
+    }
+
+    /*------------------------------------
+        Footer
+    ------------------------------------*/
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+        text-align:center;
+
+    }
+
+    .footer-grid form{
+
+        max-width:450px;
+
+        margin:auto;
+
+    }
+
+}
+/*=========================================================
+    LARGE MOBILE
+    768px
+=========================================================*/
+
+@media (max-width:768px){
+
+    :root{
+
+        --section-space:80px;
+
+    }
+
+    html{
+
+        font-size:15px;
+
+    }
+
+    body{
+
+        overflow-x:hidden;
+
+    }
+
+    .container{
+
+        width:94%;
+
+    }
+
+    /*============================
+        Navigation
+    ============================*/
+
+    #navbar{
+
+        margin:15px auto;
+
+        padding:14px 18px;
+
+        border-radius:24px;
+
+    }
+
+    .logo a{
+
+        font-size:1.55rem;
+
+        letter-spacing:3px;
+
+    }
+
+    .nav-right{
+
+        gap:10px;
+
+    }
+
+    #languagePanel{
+
+        display:none;
+
+    }
+
+    /*============================
+        Hero
+    ============================*/
+
+    .hero{
+
+        min-height:100vh;
+
+        padding:120px 0 70px;
+
+    }
+
+    .hero h1{
+
+        line-height:1.05;
+
+    }
+
+    .hero-tag{
+
+        font-size:.8rem;
+
+        letter-spacing:3px;
+
+    }
+
+    #typing-text{
+
+        font-size:1.1rem;
+
+        letter-spacing:2px;
+
+    }
+
+    .hero-buttons{
+
+        width:100%;
+
+        gap:15px;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:100%;
+
+        max-width:320px;
+
+        padding:16px 24px;
+
+    }
+
+    .scroll-indicator{
+
+        bottom:25px;
+
+    }
+
+    /*============================
+        Sections
+    ============================*/
+
+    .section-header{
+
+        margin-bottom:45px;
+
+    }
+
+    .section-bg-text{
+
+        font-size:18vw;
+
+        opacity:.03;
+
+    }
+
+    /*============================
+        Experience
+    ============================*/
+
+    .lead-text{
+
+        font-size:1.08rem;
+
+    }
+
+    .experience-image img{
+
+        min-height:380px;
+
+    }
+
+    /*============================
+        Story Images
+    ============================*/
+
+    .story-image img{
+
+        height:380px;
+
+    }
+
+    /*============================
+        Cards
+    ============================*/
+
+    .preview-grid,
+    .award-grid,
+    .stats-grid,
+    .instagram-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .preview-card img{
+
+        height:260px;
+
+    }
+
+    .counter{
+
+        font-size:2.5rem;
+
+    }
+
+    /*============================
+        Floating Buttons
+    ============================*/
+
+    #backToTop,
+    #whatsappButton,
+    #audioToggle{
+
+        width:54px;
+        height:54px;
+
+    }
+
+    #backToTop{
+
+        right:18px;
+
+        bottom:92px;
+
+    }
+
+    #whatsappButton{
+
+        right:18px;
+
+        bottom:22px;
+
+    }
+
+    #audioToggle{
+
+        left:18px;
+
+        bottom:22px;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    MEDIUM MOBILE
+    576px
+=========================================================*/
+
+@media (max-width:576px){
+
+    html{
+
+        font-size:14px;
+
+    }
+
+    h1{
+
+        font-size:clamp(2.5rem,10vw,3.6rem);
+
+    }
+
+    h2{
+
+        font-size:clamp(2rem,8vw,2.8rem);
+
+    }
+
+    h3{
+
+        font-size:1.35rem;
+
+    }
+
+    p{
+
+        font-size:.96rem;
+
+    }
+
+    .hero{
+
+        padding-top:110px;
+
+    }
+
+    .hero-content{
+
+        width:100%;
+
+    }
+
+    .hero-buttons{
+
+        gap:14px;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        max-width:none;
+
+    }
+
+    .story-content p{
+
+        font-size:1rem;
+
+    }
+
+    .story-image{
+
+        border-radius:24px;
+
+    }
+
+    .story-image img{
+
+        height:300px;
+
+    }
+
+    .experience-image img{
+
+        min-height:320px;
+
+    }
+
+    .chef-image img{
+
+        border-radius:24px;
+
+    }
+
+    .gold-circle{
+
+        width:120px;
+
+        height:120px;
+
+        top:-20px;
+
+        right:-20px;
+
+    }
+
+    .preview-content{
+
+        padding:22px;
+
+    }
+
+    .award-card,
+    .stat-card{
+
+        border-radius:22px;
+
+        padding:30px 20px;
+
+    }
+
+    .counter{
+
+        font-size:2.2rem;
+
+    }
+
+    footer{
+
+        padding:80px 0 40px;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    SMALL MOBILE
+    430px
+=========================================================*/
+
+@media (max-width:430px){
+
+    .container{
+
+        width:95%;
+
+    }
+
+    #navbar{
+
+        padding:12px 15px;
+
+    }
+
+    .logo a{
+
+        font-size:1.35rem;
+
+        letter-spacing:2px;
+
+    }
+
+    .nav-right button{
+
+        width:42px;
+
+        height:42px;
+
+    }
+
+    .hero{
+
+        padding-top:100px;
+
+    }
+
+    .hero-tag{
+
+        font-size:.72rem;
+
+    }
+
+    #typing-text{
+
+        font-size:1rem;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        padding:15px 20px;
+
+        border-radius:50px;
+
+    }
+
+    .section-subtitle{
+
+        letter-spacing:3px;
+
+    }
+
+    .story-image img{
+
+        height:250px;
+
+    }
+
+    .experience-image img{
+
+        min-height:260px;
+
+    }
+
+    .preview-card img{
+
+        height:220px;
+
+    }
+
+    .footer-bottom{
+
+        font-size:.85rem;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    EXTRA SMALL DEVICES
+    360px
+=========================================================*/
+
+@media (max-width:360px){
+
+    html{
+
+        font-size:13px;
+
+    }
+
+    h1{
+
+        font-size:2.2rem;
+
+    }
+
+    h2{
+
+        font-size:1.8rem;
+
+    }
+
+    .hero{
+
+        padding-top:90px;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        font-size:.9rem;
+
+        padding:14px 18px;
+
+    }
+
+    .story-image img{
+
+        height:220px;
+
+    }
+
+    .preview-card img{
+
+        height:200px;
+
+    }
+
+    #backToTop,
+    #whatsappButton,
+    #audioToggle{
+
+        width:48px;
+
+        height:48px;
+
+    }
+
+}
+/*=========================================================
+    ULTRA-WIDE MONITORS
+    1920px+
+=========================================================*/
+
+@media (min-width:1920px){
+
+    .container{
+
+        max-width:1680px;
+
+    }
+
+    :root{
+
+        --section-space:200px;
+
+    }
+
+    h1{
+
+        font-size:9rem;
+
+    }
+
+    h2{
+
+        font-size:5.5rem;
+
+    }
+
+    p{
+
+        font-size:1.1rem;
+
+    }
+
+    .hero-content{
+
+        max-width:1200px;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    2K & 4K DISPLAYS
+=========================================================*/
+
+@media (min-width:2560px){
+
+    html{
+
+        font-size:18px;
+
+    }
+
+    .container{
+
+        max-width:1850px;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    FOLDABLE DEVICES
+=========================================================*/
+
+@media (max-width:720px) and (min-height:700px){
+
+    .hero{
+
+        min-height:90vh;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    LANDSCAPE PHONES
+=========================================================*/
+
+@media (max-height:520px) and (orientation:landscape){
+
+    .hero{
+
+        min-height:700px;
+
+        padding-top:120px;
+
+    }
+
+    .scroll-indicator{
+
+        display:none;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    HOVER SUPPORT
+=========================================================*/
+
+@media (hover:none){
+
+    .signature-card:hover,
+    .preview-card:hover,
+    .award-card:hover,
+    .stat-card:hover{
+
+        transform:none;
+
+        box-shadow:var(--shadow);
+
+    }
+
+    .story-image:hover img{
+
+        transform:none;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    HIGH DPI
+=========================================================*/
+
+@media (-webkit-min-device-pixel-ratio:2),
+       (min-resolution:192dpi){
+
+    body{
+
+        -webkit-font-smoothing:antialiased;
+
+        text-rendering:optimizeLegibility;
+
+    }
+
+}
+
+
+
+/*=========================================================
+    ACCESSIBILITY
+=========================================================*/
+
+:focus-visible{
+
+    outline:3px solid var(--gold);
+
+    outline-offset:4px;
+
+    border-radius:8px;
+
+}
+
+button,
+a,
+input,
+textarea,
+select{
+
+    touch-action:manipulation;
+
+}
+
+
+
+/*=========================================================
+    SAFE AREA (iPhone)
+=========================================================*/
+
+@supports(padding:max(0px)){
+
+    body{
+
+        padding-left:max(0px, env(safe-area-inset-left));
+
+        padding-right:max(0px, env(safe-area-inset-right));
+
+    }
+
+}
+
+
+
+/*=========================================================
+    PRINT
+=========================================================*/
+
+@media print{
+
+    header,
+    footer,
+    #loader,
+    #progress-bar,
+    #backToTop,
+    #whatsappButton,
+    #audioToggle,
+    #mouseSpotlight,
+    .floating-orb,
+    .noise-overlay{
+
+        display:none !important;
+
+    }
+
+    body{
+
+        background:#fff;
+
+        color:#000;
+
+    }
+
+    section{
+
+        page-break-inside:avoid;
+
+    }
+
+}
+
+/*=========================================================
+    INDEX.HTML MOBILE FIXES
+    Covers all gaps not handled above:
+    signature-grid, grids at 480/360px, touch targets,
+    story section typography, hero layout, floating orbs,
+    nav buttons, footer form
+=========================================================*/
+
+/* ── 576px — medium mobile ─────────────────────────────── */
+@media (max-width:576px){
+
+    /* Signature grid — 2 col */
+    .signature-grid{
+
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:18px;
+
+    }
+
+    /* Awards and stats — 2 col */
+    .award-grid,
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+        gap:18px;
+
+    }
+
+    /* Instagram — 2 col */
+    .instagram-grid{
+
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
+
+    }
+
+    /* Preview — 1 col */
+    .preview-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    /* Story text */
+    .story-content h2{
+
+        font-size:clamp(1.9rem,7vw,2.8rem);
+
+    }
+
+    .story-content p{
+
+        font-size:.95rem;
+
+    }
+
+    .lead-text{
+
+        font-size:1rem;
+
+    }
+
+    /* Story button — full width */
+    .story-button{
+
+        width:100%;
+        justify-content:center;
+        text-align:center;
+        padding:16px 24px;
+        min-height:52px;
+
+    }
+
+    /* Hero buttons — full width stack */
+    .hero-buttons{
+
+        flex-direction:column;
+        align-items:center;
+        width:100%;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:100%;
+        max-width:none;
+        padding:16px 20px;
+        min-height:52px;
+        font-size:.95rem;
+
+    }
+
+    /* Nav right buttons — keep touchable */
+    .nav-right button{
+
+        width:46px;
+        height:46px;
+        min-width:44px;
+        min-height:44px;
+
+    }
+
+    /* Section padding tighter */
+    section{
+
+        padding:70px 0;
+
+    }
+
+    /* Chef blockquote */
+    .chef-content blockquote{
+
+        font-size:1.3rem;
+
+    }
+
+    /* Stat counter */
+    .counter{
+
+        font-size:2.2rem;
+
+    }
+
+    .stat-card,
+    .award-card{
+
+        padding:32px 20px;
+
+    }
+
+    /* Reservation CTA */
+    .reservation-content h2{
+
+        font-size:clamp(2rem,8vw,3rem);
+
+    }
+
+    /* Footer form */
+    .footer-grid form{
+
+        width:100%;
+
+    }
+
+    .footer-grid input,
+    .footer-grid button{
+
+        min-height:48px;
+
+    }
+
+    /* Hide decorative orbs on mobile — they cause overflow */
+    .floating-orb{
+
+        display:none;
+
+    }
+
+    /* Shrink section bg text further */
+    .section-bg-text{
+
+        font-size:22vw;
+
+    }
+
+}
+
+/* ── 480px — small-medium mobile ───────────────────────── */
+@media (max-width:480px){
+
+    /* Signature grid — 1 col below 480px */
+    .signature-grid{
+
+        grid-template-columns:1fr;
+        gap:16px;
+
+    }
+
+    /* Signature card image */
+    .signature-card .card-image{
+
+        height:200px;
+        overflow:hidden;
+        border-radius:16px;
+
+    }
+
+    .signature-card .card-image img{
+
+        width:100%;
+        height:100%;
+        object-fit:cover;
+
+    }
+
+    /* Awards and stats — 1 col */
+    .award-grid,
+    .stats-grid{
+
+        grid-template-columns:1fr;
+        gap:14px;
+
+    }
+
+    .award-card,
+    .stat-card{
+
+        padding:28px 20px;
+        border-radius:20px;
+
+    }
+
+    /* Instagram — 3 small squares */
+    .instagram-grid{
+
+        grid-template-columns:repeat(3,1fr);
+        gap:8px;
+
+    }
+
+    .instagram-card{
+
+        border-radius:14px;
+
+    }
+
+    /* Hero h1 — prevent word-wrapping awkwardly */
+    .hero h1{
+
+        font-size:clamp(2.2rem,10vw,3rem);
+        line-height:1.08;
+
+    }
+
+    /* Kill 3D perspective effects on touch */
+    .story-section,
+    .experience-image{
+
+        perspective:none;
+        transform-style:flat;
+
+    }
+
+    /* Experience image */
+    .experience-image img{
+
+        min-height:280px;
+        border-radius:20px;
+
+    }
+
+    /* Story images */
+    .story-image{
+
+        border-radius:20px;
+
+    }
+
+    .story-image img{
+
+        height:260px;
+
+    }
+
+    /* Section spacing */
+    :root{
+
+        --section-space:60px;
+
+    }
+
+    /* Mobile menu content padding */
+    .mobile-menu-content{
+
+        padding:70px 28px 40px;
+
+    }
+
+    .mobile-menu-content nav a{
+
+        font-size:1.1rem;
+        padding:13px 0;
+
+    }
+
+    .mobile-socials a{
+
+        width:44px;
+        height:44px;
+
+    }
+
+    /* Mobile action buttons */
+    .mobile-menu-actions button{
+
+        min-height:46px;
+
+    }
+
+    /* Nav button size */
+    #navbar{
+
+        padding:12px 15px;
+        border-radius:20px;
+
+    }
+
+    .logo a{
+
+        font-size:1.35rem;
+
+    }
+
+}
+
+/* ── 360px — very small mobile ─────────────────────────── */
+@media (max-width:360px){
+
+    .hero h1{
+
+        font-size:2rem;
+
+    }
+
+    .hero-tag{
+
+        font-size:.7rem;
+        letter-spacing:2px;
+
+    }
+
+    #typing-text{
+
+        font-size:.9rem;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        font-size:.85rem;
+        padding:14px 16px;
+        min-height:48px;
+
+    }
+
+    .section-header{
+
+        margin-bottom:32px;
+
+    }
+
+    .story-content h2{
+
+        font-size:1.8rem;
+
+    }
+
+    .story-image img{
+
+        height:220px;
+
+    }
+
+    .chef-content blockquote{
+
+        font-size:1.1rem;
+
+    }
+
+    .mobile-menu-content h2{
+
+        font-size:1.8rem;
+
+    }
+
+    .mobile-menu-content nav a{
+
+        font-size:1rem;
+
+    }
+
+    /* Stat */
+    .counter{
+
+        font-size:2rem;
+
+    }
+
+    /* Floating buttons — tighten */
+    #backToTop,
+    #whatsappButton,
+    #audioToggle{
+
+        width:48px;
+        height:48px;
+
+    }
+
+    #backToTop{
+
+        right:12px;
+        bottom:80px;
+
+    }
+
+    #whatsappButton{
+
+        right:12px;
+        bottom:18px;
+
+    }
+
+    #audioToggle{
+
+        left:12px;
+        bottom:18px;
+
+    }
+
+}
+
+/* ── Landscape phones ───────────────────────────────────── */
+@media (max-height:500px) and (orientation:landscape){
+
+    .hero{
+
+        min-height:100vh;
+        padding:80px 0 40px;
+
+    }
+
+    .hero h1{
+
+        font-size:2rem;
+        margin:10px 0;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:row;
+        flex-wrap:wrap;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:auto;
+        min-width:180px;
+
+    }
+
+    .mobile-mega-menu{
+
+        overflow-y:auto;
+
+    }
+
+}
+
+/* ── Touch devices — disable expensive hover effects ────── */
+@media (hover:none){
+
+    .story-image:hover img{
+
+        transform:none;
+
+    }
+
+    .story-button:hover{
+
+        transform:none;
+
+    }
+
+    .award-card:hover,
+    .stat-card:hover,
+    .signature-card:hover{
+
+        transform:none;
+        box-shadow:var(--shadow);
+
+    }
+
+    .mobile-socials a:hover{
+
+        transform:none;
+
+    }
+
+    .close-menu:hover{
+
+        transform:none;
+
+    }
+
+}
+
+/* ── Safe area — notch support ──────────────────────────── */
+@supports(padding:max(0px)){
+
+    header{
+
+        padding-top:max(0px, env(safe-area-inset-top));
+
+    }
+
+    #mobileMenu{
+
+        padding-right:max(0px, env(safe-area-inset-right));
+
+    }
+
+    footer{
+
+        padding-bottom:max(20px, env(safe-area-inset-bottom));
+
+    }
+
+    #backToTop,
+    #whatsappButton{
+
+        bottom:max(22px, calc(env(safe-area-inset-bottom) + 12px));
+
+    }
+
+    #audioToggle{
+
+        bottom:max(22px, calc(env(safe-area-inset-bottom) + 12px));
+
+    }
+
+}

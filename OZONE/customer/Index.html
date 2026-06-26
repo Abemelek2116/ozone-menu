@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OZONE | Luxury Café • Restaurant • Bar</title>
+
+    <meta name="description"
+        content="Experience OZONE — A luxury destination where café culture, fine dining, and premium cocktails meet in one unforgettable atmosphere.">
+    <meta name="keywords" content="Restaurant, Cafe, Bar, Luxury Restaurant, Digital Menu, OZONE">
+    <meta name="author" content="OZONE">
+    <meta name="theme-color" content="#090909">
+
+    <meta property="og:title" content="OZONE | Luxury Dining Experience">
+    <meta property="og:description" content="Luxury Café • Restaurant • Bar">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/logo/social-preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div id="loader">
+        <div class="loader-content">
+            <h1 class="loader-logo">OZONE</h1>
+            <div class="loader-line"><span></span></div>
+            <p data-i18n="loader.tagline">Luxury Café • Restaurant • Bar</p>
+        </div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- SCROLL PROGRESS BAR -->
+    <div id="progress-bar"></div>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav id="navbar">
+
+            <div class="logo"><a href="#">OZONE</a></div>
+
+            <ul class="nav-links">
+                <li><a href="#" data-i18n="nav.home">Home</a></li>
+                <li><a href="pages/menu.html" data-i18n="nav.menu">Menu</a></li>
+                <li><a href="#" data-i18n="nav.gallery">Gallery</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
+                <button id="languageToggle">EN | አማ</button>
+                <button class="mobile-menu" id="openMenu"><i class="fa-solid fa-bars"></i></button>
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <video autoplay muted loop playsinline id="heroVideo">
+            <source src="assets/videos/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="gradient-layer"></div>
+        <div id="particles"></div>
+        <div class="mouse-light"></div>
+
+        <div class="hero-content">
+            <p class="hero-tag" data-i18n="hero.tag">Luxury Café • Restaurant • Bar</p>
+            <h1>
+                <span class="hero-word" data-i18n="hero.where">Where</span>
+                <span class="hero-word gold" data-i18n="hero.taste">Taste</span>
+                <span class="hero-word" data-i18n="hero.meets">Meets</span>
+                <span class="hero-word gold" data-i18n="hero.atmosphere">Atmosphere</span>
+            </h1>
+            <div class="typing-container"><span id="typing-text"></span></div>
+            <div class="hero-buttons">
+                <a href="#experience" class="btn-primary" data-i18n="hero.explore">Explore Menu</a>
+                <a href="#reservation" class="btn-secondary" data-i18n="hero.reserve">Reserve Table</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span></span><span></span><span></span>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE OZONE -->
+    <section id="experience" class="experience section">
+        <div class="section-bg-text">EXPERIENCE</div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-i18n="exp.subtitle">Discover OZONE</span>
+                <h2 class="section-title" data-i18n="exp.title">More Than Dining.<br>A Journey Through Atmosphere.</h2>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-left">
+                    <p class="lead-text" data-i18n="exp.lead">OZONE isn't just a place to eat. It's where conversations begin, celebrations come alive, and unforgettable evenings unfold.</p>
+                    <p data-i18n="exp.body">Every corner is thoughtfully designed to blend exceptional cuisine, handcrafted coffee, signature cocktails, ambient lighting, and warm hospitality into one seamless luxury experience.</p>
+                </div>
+                <div class="experience-right">
+                    <div class="experience-image image-parallax">
+                        <img src="assets/images/backgrounds/experience.jpg" alt="Luxury Dining Experience">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAFE STORY -->
+    <section id="cafe" class="story-section cafe-story">
+        <div class="story-overlay"></div>
+        <div class="container">
+            <div class="story-content">
+                <span class="story-label" data-i18n="cafe.label">Café Experience</span>
+                <h2 data-i18n="cafe.title">Crafted Coffee.<br>Quiet Moments.</h2>
+                <p data-i18n="cafe.body">Begin your day surrounded by rich aromas, artisan coffee, freshly baked pastries, and spaces designed for conversation, creativity, and comfort.</p>
+                <a href="#menu" class="story-button" data-i18n="cafe.btn">Explore Café</a>
+            </div>
+            <div class="story-image floating-card">
+                <img src="assets/images/hero/cafe.png" alt="Luxury Coffee">
+                <div class="steam-animation"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESTAURANT STORY -->
+    <section id="restaurant" class="story-section restaurant-story">
+        <div class="container">
+            <div class="story-image image-parallax">
+                <img src="assets/images/hero/restaurant.png" alt="Restaurant Dining">
+            </div>
+            <div class="story-content">
+                <span class="story-label" data-i18n="rest.label">Fine Dining</span>
+                <h2 data-i18n="rest.title">Culinary Art<br>Meets Passion.</h2>
+                <p data-i18n="rest.body">Every ingredient is selected with purpose. Every dish tells a story. Every plate is carefully prepared to create an unforgettable dining experience.</p>
+                <a href="#menu" class="story-button" data-i18n="rest.btn">View Restaurant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAR STORY -->
+    <section id="bar" class="story-section bar-story">
+        <div class="glass-overlay"></div>
+        <div class="container">
+            <div class="story-content">
+                <span class="story-label" data-i18n="bar.label">Signature Bar</span>
+                <h2 data-i18n="bar.title">Every Cocktail<br>Has A Story.</h2>
+                <p data-i18n="bar.body">Crafted by expert mixologists, inspired by international flavors, and served inside a luxurious atmosphere designed for unforgettable nights.</p>
+                <a href="#menu" class="story-button" data-i18n="bar.btn">Explore Cocktails</a>
+            </div>
+            <div class="story-image floating-glass">
+                <img src="assets/images/hero/bar.png" alt="Luxury Cocktail">
+                <div class="bubble-container">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE EXPERIENCE -->
+    <section class="signature-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-i18n="sig.subtitle">Curated Experiences</span>
+                <h2 data-i18n="sig.title">Every Meal<br>Deserves A Perfect Setting.</h2>
+            </div>
+            <div class="signature-grid">
+                <article class="signature-card">
+                    <div class="card-image"><img src="assets/images/foods/breakfast.jpg" alt="Breakfast"></div>
+                    <h3 data-i18n="sig.breakfast">Breakfast</h3>
+                    <p data-i18n="sig.breakfast.p">Fresh mornings inspired by artisan flavors.</p>
+                </article>
+                <article class="signature-card">
+                    <div class="card-image"><img src="assets/images/foods/lunch.jpg" alt="Lunch"></div>
+                    <h3 data-i18n="sig.lunch">Lunch</h3>
+                    <p data-i18n="sig.lunch.p">Elegant midday dining with premium ingredients.</p>
+                </article>
+                <article class="signature-card">
+                    <div class="card-image"><img src="assets/images/foods/dinner.jpg" alt="Dinner"></div>
+                    <h3 data-i18n="sig.dinner">Dinner</h3>
+                    <p data-i18n="sig.dinner.p">Sophisticated evenings elevated by fine cuisine.</p>
+                </article>
+                <article class="signature-card">
+                    <div class="card-image"><img src="assets/images/foods/dessert.jpg" alt="Desserts"></div>
+                    <h3 data-i18n="sig.desserts">Desserts</h3>
+                    <p data-i18n="sig.desserts.p">Sweet creations crafted to finish every experience.</p>
+                </article>
+                <article class="signature-card">
+                    <div class="card-image"><img src="assets/images/foods/cocktail.jpg" alt="Cocktails"></div>
+                    <h3 data-i18n="sig.cocktails">Cocktails</h3>
+                    <p data-i18n="sig.cocktails.p">Signature drinks designed by world-class mixologists.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEF PHILOSOPHY -->
+    <section id="chef" class="chef-philosophy section">
+        <div class="container">
+            <div class="chef-grid">
+                <div class="chef-image">
+                    <img src="assets/images/backgrounds/chef.jpg" alt="Executive Chef">
+                    <div class="gold-circle"></div>
+                </div>
+                <div class="chef-content">
+                    <span class="section-subtitle" data-i18n="chef.subtitle">Executive Chef</span>
+                    <h2 class="section-title" data-i18n="chef.title">Every Ingredient<br>Has A Purpose.</h2>
+                    <p data-i18n="chef.body">At OZONE, every dish begins with carefully selected ingredients, refined techniques, and a passion for creating memorable moments.</p>
+                    <blockquote data-i18n="chef.quote">"Luxury isn't about complexity. It's about perfecting every detail."</blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTICS -->
+    <section class="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h2 class="counter" data-count="12">0</h2>
+                    <p data-i18n="stat.years">Years of Excellence</p>
+                </div>
+                <div class="stat-card">
+                    <h2 class="counter" data-count="250">0</h2>
+                    <p data-i18n="stat.dishes">Luxury Dishes</p>
+                </div>
+                <div class="stat-card">
+                    <h2 class="counter" data-count="50000">0</h2>
+                    <p data-i18n="stat.guests">Happy Guests</p>
+                </div>
+                <div class="stat-card">
+                    <h2 class="counter" data-count="4">0</h2>
+                    <p data-i18n="stat.exp">Luxury Experiences</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AWARDS -->
+    <section class="awards">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-i18n="awards.subtitle">Recognition</span>
+                <h2 data-i18n="awards.title">Excellence Recognized.</h2>
+            </div>
+            <div class="award-grid">
+                <div class="award-card">
+                    <i class="fa-solid fa-award"></i>
+                    <h3 data-i18n="awards.dining">Luxury Dining</h3>
+                </div>
+                <div class="award-card">
+                    <i class="fa-solid fa-star"></i>
+                    <h3 data-i18n="awards.service">Premium Service</h3>
+                </div>
+                <div class="award-card">
+                    <i class="fa-solid fa-utensils"></i>
+                    <h3 data-i18n="awards.cuisine">Signature Cuisine</h3>
+                </div>
+                <div class="award-card">
+                    <i class="fa-solid fa-martini-glass"></i>
+                    <h3 data-i18n="awards.cocktails">Finest Cocktails</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU PREVIEW -->
+    <section id="menu" class="menu-preview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-i18n="menu.subtitle">Signature Collection</span>
+                <h2 data-i18n="menu.title">Crafted For Every Taste.</h2>
+            </div>
+            <div class="preview-grid">
+                <article class="preview-card">
+                    <img src="assets/images/foods/food1.jpg" alt="Food">
+                    <div class="preview-content">
+                        <h3 data-i18n="menu.steak">Grilled Ribeye Steak</h3>
+                        <p data-i18n="menu.steak.p">Premium Angus Beef</p>
+                    </div>
+                </article>
+                <article class="preview-card">
+                    <img src="assets/images/foods/food2.jpg" alt="Food">
+                    <div class="preview-content">
+                        <h3 data-i18n="menu.coffee">Artisan Coffee</h3>
+                        <p data-i18n="menu.coffee.p">Freshly Brewed</p>
+                    </div>
+                </article>
+                <article class="preview-card">
+                    <img src="assets/images/foods/food3.jpg" alt="Food">
+                    <div class="preview-content">
+                        <h3 data-i18n="menu.cocktail">Signature Cocktail</h3>
+                        <p data-i18n="menu.cocktail.p">Craft Mixology</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION CTA -->
+    <section id="reservation" class="reservation-cta">
+        <div class="reservation-overlay"></div>
+        <div class="container">
+            <div class="reservation-content">
+                <span data-i18n="res.span">Luxury Awaits</span>
+                <h2 data-i18n="res.title">Ready<br>For An<br>Unforgettable Evening?</h2>
+                <a href="#" class="btn-primary" data-i18n="res.btn">Reserve Your Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM PREVIEW -->
+    <section class="instagram-feed">
+        <div class="container">
+            <div class="section-header">
+                <span data-i18n="ig.span">Follow OZONE</span>
+                <h2 data-i18n="ig.title">Moments Worth Sharing</h2>
+            </div>
+            <div class="instagram-grid">
+                <div class="instagram-card"></div>
+                <div class="instagram-card"></div>
+                <div class="instagram-card"></div>
+                <div class="instagram-card"></div>
+                <div class="instagram-card"></div>
+                <div class="instagram-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h2>OZONE</h2>
+                    <p data-i18n="footer.tagline">Luxury Café • Restaurant • Bar</p>
+                </div>
+                <div>
+                    <h3 data-i18n="footer.contact">Contact</h3>
+                    <p>Addis Ababa</p>
+                    <p>+251 XXX XXX XXX</p>
+                    <p>info@ozone.com</p>
+                </div>
+                <div>
+                    <h3 data-i18n="footer.hours">Opening Hours</h3>
+                    <p data-i18n="footer.days">Monday – Sunday</p>
+                    <p data-i18n="footer.time">7:00 AM – 12:00 AM</p>
+                </div>
+                <div>
+                    <h3 data-i18n="footer.newsletter">Newsletter</h3>
+                    <form>
+                        <input type="email" data-i18n="footer.email" placeholder="Email Address">
+                        <button data-i18n="footer.subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copy">© 2026 OZONE. Crafted with elegance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING BUTTONS -->
+    <a href="#" id="backToTop"><i class="fa-solid fa-arrow-up"></i></a>
+    <a href="#" id="whatsappButton"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <!-- MOBILE MEGA MENU -->
+    <aside id="mobileMenu" class="mobile-mega-menu">
+        <button id="closeMenu" class="close-menu"><i class="fa-solid fa-xmark"></i></button>
+        <div class="mobile-menu-content">
+            <h2>OZONE</h2>
+            <nav>
+                <a href="#" data-i18n="mob.home">Home</a>
+                <a href="#experience" data-i18n="mob.experience">Experience</a>
+                <a href="#cafe" data-i18n="mob.cafe">Cafe</a>
+                <a href="#restaurant" data-i18n="mob.restaurant">Restaurant</a>
+                <a href="#bar" data-i18n="mob.bar">Bar</a>
+                <a href="pages/menu.html" data-i18n="mob.menu">Menu</a>
+                <a href="#reservation" data-i18n="mob.reservation">Reservation</a>
+                <a href="#contact" data-i18n="mob.contact">Contact</a>
+            </nav>
+            <div class="mobile-menu-actions">
+                <button id="mobileThemeToggle"><i class="fa-solid fa-moon"></i></button>
+                <button id="mobileLangToggle">EN | አማ</button>
+            </div>
+            <div class="mobile-socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- AMBIENT AUDIO -->
+    <audio id="ambientAudio" loop>
+        <source src="assets/audio/lounge.mp3" type="audio/mpeg">
+    </audio>
+    <button id="audioToggle"><i class="fa-solid fa-volume-high"></i></button>
+
+    <!-- THEME TRANSITION -->
+    <div id="themeTransition"></div>
+
+    <!-- MOUSE SPOTLIGHT -->
+    <div id="mouseSpotlight"></div>
+
+    <!-- THREE.JS CONTAINER -->
+    <div id="webglCanvas"></div>
+
+    <!-- LOTTIE CONTAINER -->
+    <div id="lottieContainer"></div>
+
+    <!-- DECORATIVE ELEMENTS -->
+    <div class="floating-orb orb-one"></div>
+    <div class="floating-orb orb-two"></div>
+    <div class="floating-orb orb-three"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r158/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/cursor.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

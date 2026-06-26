@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZONE Admin — Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <style>
+        /* Live pulse indicator */
+        .live-dot {
+            width: 8px; height: 8px;
+            background: #1AA37A; border-radius: 50%;
+            display: inline-block; margin-right: 6px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: .4; transform: scale(.8); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="auth-loading">
+    <h2>OZONE</h2>
+    <div class="spinner"></div>
+</div>
+
+<div class="admin-layout" id="app" style="display:none">
+
+    <aside id="sidebar"></aside>
+
+    <main class="admin-main">
+
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Live Orders</h1>
+                <p class="page-subtitle">
+                    <span class="live-dot"></span>Kitchen &amp; Service Panel
+                </p>
+            </div>
+            <button class="btn btn-ghost" id="refresh-btn">
+                <i class="fas fa-rotate-right"></i> Refresh
+            </button>
+        </div>
+
+        <!-- Filter bar -->
+        <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+            <select class="form-control" id="status-filter" style="max-width:180px">
+                <option value="all">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Preparing">Preparing</option>
+                <option value="Ready">Ready</option>
+                <option value="Served">Served</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+
+        <div class="panel">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Table</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-body">
+                    <tr><td colspan="7" style="color:#B5B5B5;text-align:center;padding:30px">Loading orders…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/sidebar.js"></script>
+<script>
+"use strict";
+
+let _allOrders = [];
+let _pollTimer = null;
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const session = OzoneAuth.requireAuth();
+    if (!session) return;
+
+    document.getElementById("auth-loading").style.display = "none";
+    document.getElementById("app").style.display = "grid";
+
+    renderSidebar("orders");
+    OzoneAuth.populateSidebar(session);
+
+    await loadOrders();
+
+    // Auto-refresh every 30 seconds
+    _pollTimer = setInterval(loadOrders, 30_000);
+
+    document.getElementById("refresh-btn").addEventListener("click", loadOrders);
+    document.getElementById("status-filter").addEventListener("change", renderTable);
+});
+
+async function loadOrders() {
+    try {
+        const data = await OzoneUtils.apiGet({ action: "getOrders" });
+        _allOrders = Array.isArray(data) ? data : (data.orders || []);
+        renderTable();
+    } catch (err) {
+        OzoneUtils.toast("Failed to load orders: " + err.message, "error");
+    }
+}
+
+function renderTable() {
+    const filter = document.getElementById("status-filter").value;
+    const items  = filter === "all"
+        ? _allOrders
+        : _allOrders.filter(o => o.status === filter);
+
+    const tbody = document.getElementById("orders-body");
+    if (!items.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="color:#B5B5B5;text-align:center;padding:30px">No orders found.</td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = items.map(o => {
+        const statusClass = {
+            Pending:   "badge-warn",
+            Preparing: "badge-warn",
+            Ready:     "badge-success",
+            Served:    "badge-gray",
+            Cancelled: "badge-danger"
+        }[o.status] || "badge-gray";
+
+        return `
+        <tr>
+            <td style="font-family:monospace;font-size:.82rem">#${OzoneUtils.escape(String(o.id || "—"))}</td>
+            <td>${OzoneUtils.escape(o.table || "—")}</td>
+            <td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                ${OzoneUtils.escape(o.items || "—")}</td>
+            <td>${OzoneUtils.formatCurrency(o.total || 0)}</td>
+            <td><span class="badge ${statusClass}">${OzoneUtils.escape(o.status || "—")}</span></td>
+            <td style="color:#B5B5B5;font-size:.82rem">${OzoneUtils.escape(o.time || "—")}</td>
+            <td style="display:flex;gap:6px;flex-wrap:wrap">
+                ${o.status === "Pending" ? `
+                    <button class="btn btn-success" style="padding:5px 10px;font-size:.78rem"
+                            onclick="updateStatus('${OzoneUtils.escape(String(o.id))}','Preparing')">
+                        Accept
+                    </button>` : ""}
+                ${o.status === "Preparing" ? `
+                    <button class="btn btn-primary" style="padding:5px 10px;font-size:.78rem;background:#f59e0b;color:#000"
+                            onclick="updateStatus('${OzoneUtils.escape(String(o.id))}','Ready')">
+                        Ready
+                    </button>` : ""}
+                ${o.status === "Ready" ? `
+                    <button class="btn btn-ghost" style="padding:5px 10px;font-size:.78rem"
+                            onclick="updateStatus('${OzoneUtils.escape(String(o.id))}','Served')">
+                        Served
+                    </button>` : ""}
+                ${o.status !== "Served" && o.status !== "Cancelled" ? `
+                    <button class="btn btn-danger" style="padding:5px 10px;font-size:.78rem"
+                            onclick="updateStatus('${OzoneUtils.escape(String(o.id))}','Cancelled')">
+                        <i class="fas fa-xmark"></i>
+                    </button>` : ""}
+            </td>
+        </tr>`;
+    }).join("");
+}
+
+async function updateStatus(id, status) {
+    try {
+        const res = await OzoneUtils.apiPost({ action: "updateOrderStatus", id, status });
+        if (res.success) {
+            OzoneUtils.toast(`Order marked as ${status}.`);
+            await loadOrders();
+        } else {
+            OzoneUtils.toast(res.message || "Update failed.", "error");
+        }
+    } catch (err) {
+        OzoneUtils.toast(err.message, "error");
+    }
+}
+</script>
+</body>
+</html>

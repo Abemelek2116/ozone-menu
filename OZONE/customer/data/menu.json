@@ -1,0 +1,303 @@
+{
+  "restaurant": {
+    "name": "OZONE",
+    "currency": "ETB",
+    "currencySymbol": "Br",
+    "taxRate": 0.15,
+    "serviceCharge": 0.10,
+    "lastUpdated": "2026-06-24"
+  },
+
+  "menu": [
+
+    {
+      "id": "FD0001",
+
+      "category": "breakfast",
+      "subcategory": "Eggs",
+
+      "name": {
+        "en": "Royal Sunrise Breakfast",
+        "am": "ሮያል ሰንራይዝ ቁርስ"
+      },
+
+      "shortDescription": {
+        "en": "A luxury breakfast platter.",
+        "am": "ልዩ የቁርስ ሳህን።"
+      },
+
+      "description": {
+        "en": "Farm fresh eggs, toasted artisan bread, grilled vegetables, premium sausage, avocado and seasonal fruits.",
+        "am": "እንቁላል፣ ዳቦ፣ አትክልቶች፣ ሶሴጅ፣ አቮካዶ እና ፍራፍሬዎች።"
+      },
+
+      "images": [
+        "assets/images/foods/breakfast/royal-1.jpg",
+        "assets/images/foods/breakfast/royal-2.jpg",
+        "assets/images/foods/breakfast/royal-3.jpg"
+      ],
+
+      "price": {
+        "small": 480,
+        "medium": 620,
+        "large": 780
+      },
+
+      "discount": {
+        "enabled": true,
+        "percentage": 10,
+        "discountPrice": {
+          "small": 432,
+          "medium": 558,
+          "large": 702
+        }
+      },
+
+      "nutrition": {
+        "calories": 760,
+        "protein": "36 g",
+        "fat": "28 g",
+        "carbohydrates": "72 g"
+      },
+
+      "portionSize": "Large Plate",
+
+      "preparationTime": 18,
+
+      "spiceLevel": 0,
+
+      "ingredients": [
+        "Eggs",
+        "Bread",
+        "Butter",
+        "Sausage",
+        "Avocado",
+        "Tomatoes",
+        "Fresh Fruits"
+      ],
+
+      "allergens": [
+        "Egg",
+        "Milk",
+        "Gluten"
+      ],
+
+      "dietary": [
+        "High Protein"
+      ],
+
+      "addons": [
+
+        {
+          "id":"AD001",
+          "name":"Extra Cheese",
+          "price":40
+        },
+
+        {
+          "id":"AD002",
+          "name":"Extra Egg",
+          "price":35
+        },
+
+        {
+          "id":"AD003",
+          "name":"Avocado",
+          "price":55
+        }
+
+      ],
+
+      "availability": true,
+
+      "badges": [
+        "Best Seller",
+        "Chef Pick"
+      ],
+
+      "featured": true,
+
+      "chefRecommendation": true,
+
+      "seasonal": false,
+
+      "dailySpecial": false,
+
+      "newArrival": false,
+
+      "rating": 4.9,
+
+      "reviewCount": 327,
+
+      "soldCount": 4218,
+
+      "relatedItems": [
+        "FD0002",
+        "FD0003",
+        "FD0010"
+      ]
+    },
+
+    {
+      "id":"FD0002",
+
+      "category":"coffee",
+
+      "subcategory":"Espresso",
+
+      "name":{
+
+        "en":"Signature Cappuccino",
+
+        "am":"ሲግኔቸር ካፑቺኖ"
+
+      },
+
+      "shortDescription":{
+
+        "en":"Smooth Ethiopian coffee.",
+
+        "am":"ለስላሳ የኢትዮጵያ ቡና።"
+
+      },
+
+      "description":{
+
+        "en":"Premium Ethiopian beans with silky steamed milk and artisan foam.",
+
+        "am":"ከኢትዮጵያ ቡና የተዘጋጀ ካፑቺኖ።"
+
+      },
+
+      "images":[
+
+        "assets/images/foods/coffee/cappuccino1.jpg",
+
+        "assets/images/foods/coffee/cappuccino2.jpg"
+
+      ],
+
+      "price":{
+
+        "small":140,
+
+        "medium":170,
+
+        "large":210
+
+      },
+
+      "discount":{
+
+        "enabled":false
+
+      },
+
+      "nutrition":{
+
+        "calories":145,
+
+        "protein":"6 g",
+
+        "fat":"5 g",
+
+        "carbohydrates":"18 g"
+
+      },
+
+      "portionSize":"Cup",
+
+      "preparationTime":6,
+
+      "spiceLevel":0,
+
+      "ingredients":[
+
+        "Espresso",
+
+        "Milk"
+
+      ],
+
+      "allergens":[
+
+        "Milk"
+
+      ],
+
+      "dietary":[
+
+        "Vegetarian"
+
+      ],
+
+      "addons":[
+
+        {
+
+          "id":"AD020",
+
+          "name":"Extra Shot",
+
+          "price":30
+
+        },
+
+        {
+
+          "id":"AD021",
+
+          "name":"Vanilla Syrup",
+
+          "price":25
+
+        },
+
+        {
+
+          "id":"AD022",
+
+          "name":"Oat Milk",
+
+          "price":35
+
+        }
+
+      ],
+
+      "availability":true,
+
+      "badges":[
+
+        "Popular"
+
+      ],
+
+      "featured":true,
+
+      "chefRecommendation":false,
+
+      "seasonal":false,
+
+      "dailySpecial":true,
+
+      "newArrival":false,
+
+      "rating":4.8,
+
+      "reviewCount":642,
+
+      "soldCount":9021,
+
+      "relatedItems":[
+
+        "FD0004",
+
+        "FD0005"
+
+      ]
+
+    }
+
+  ]
+}

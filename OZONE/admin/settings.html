@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZONE Admin — Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <style>
+        /* Toggle switch */
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .toggle-row:last-child { border-bottom: none; }
+        .toggle-row label { font-size: .875rem; color: #fff; }
+        .toggle-row small  { font-size: .75rem; color: #B5B5B5; display: block; margin-top: 2px; }
+
+        .switch {
+            position: relative;
+            width: 46px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .switch-track {
+            position: absolute;
+            inset: 0;
+            background: #333;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .switch-track::after {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: .3s;
+        }
+        .switch input:checked + .switch-track { background: #D4AF37; }
+        .switch input:checked + .switch-track::after { left: 25px; }
+
+        /* Admins section */
+        .admin-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .admin-row:last-child { border-bottom: none; }
+        .admin-avatar-sm {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(212,175,55,.1);
+            border: 1px solid rgba(212,175,55,.2);
+            display: flex; align-items: center; justify-content: center;
+            color: #D4AF37; font-size: .85rem;
+            flex-shrink: 0;
+        }
+        .admin-email { font-size: .82rem; color: #B5B5B5; }
+    </style>
+</head>
+<body>
+
+<div id="auth-loading">
+    <h2>OZONE</h2>
+    <div class="spinner"></div>
+</div>
+
+<div class="admin-layout" id="app" style="display:none">
+
+    <aside id="sidebar"></aside>
+
+    <main class="admin-main">
+
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Settings</h1>
+                <p class="page-subtitle">Configure OZONE system</p>
+            </div>
+        </div>
+
+        <!-- Restaurant Profile -->
+        <div class="panel">
+            <h2 class="panel-title">Restaurant Profile</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Restaurant Name</label>
+                    <input class="form-control" id="s-name" placeholder="OZONE">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input class="form-control" id="s-phone" placeholder="+251…">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" id="s-email" type="email" placeholder="info@ozone.com">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input class="form-control" id="s-address" placeholder="Addis Ababa">
+                </div>
+                <div class="form-group">
+                    <label>Currency Symbol</label>
+                    <input class="form-control" id="s-currency" placeholder="Br">
+                </div>
+                <div class="form-group">
+                    <label>Default Language</label>
+                    <select class="form-control" id="s-lang">
+                        <option value="en">English</option>
+                        <option value="am">Amharic</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="save-profile-btn" style="margin-top:16px">
+                <i class="fas fa-floppy-disk"></i> Save Profile
+            </button>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="panel">
+            <h2 class="panel-title">Opening Hours</h2>
+            <div class="form-grid" style="grid-template-columns:1fr 1fr">
+                <div class="form-group">
+                    <label>Opening Time</label>
+                    <input class="form-control" id="s-open" type="time" value="08:00">
+                </div>
+                <div class="form-group">
+                    <label>Closing Time</label>
+                    <input class="form-control" id="s-close" type="time" value="23:00">
+                </div>
+            </div>
+            <button class="btn btn-primary" id="save-hours-btn" style="margin-top:16px">
+                <i class="fas fa-floppy-disk"></i> Save Hours
+            </button>
+        </div>
+
+        <!-- Tax settings -->
+        <div class="panel">
+            <h2 class="panel-title">Tax &amp; Service Charge</h2>
+            <div class="form-grid" style="grid-template-columns:1fr 1fr">
+                <div class="form-group">
+                    <label>VAT Rate (%)</label>
+                    <input class="form-control" id="s-vat" type="number" placeholder="15" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label>Service Charge (%)</label>
+                    <input class="form-control" id="s-service" type="number" placeholder="10" step="0.1">
+                </div>
+            </div>
+            <button class="btn btn-primary" id="save-tax-btn" style="margin-top:16px">
+                <i class="fas fa-floppy-disk"></i> Save Tax Config
+            </button>
+        </div>
+
+        <!-- System toggles -->
+        <div class="panel">
+            <h2 class="panel-title">System Preferences</h2>
+            <div class="toggle-row">
+                <div>
+                    <label>Enable Online Orders</label>
+                    <small>Allow customers to place orders from the digital menu</small>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="t-orders" checked>
+                    <span class="switch-track"></span>
+                </label>
+            </div>
+            <div class="toggle-row">
+                <div>
+                    <label>Allow Reservations</label>
+                    <small>Show the reservation form on the public site</small>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="t-reservations">
+                    <span class="switch-track"></span>
+                </label>
+            </div>
+            <div class="toggle-row">
+                <div>
+                    <label>Dark Mode (Public Site)</label>
+                    <small>Force dark theme on the customer-facing menu</small>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="t-dark" checked>
+                    <span class="switch-track"></span>
+                </label>
+            </div>
+            <button class="btn btn-primary" id="save-toggles-btn" style="margin-top:16px">
+                <i class="fas fa-floppy-disk"></i> Save Preferences
+            </button>
+        </div>
+
+        <!-- Admin team (read-only view — managed in Google Sheet) -->
+        <div class="panel" id="admins-panel" style="display:none">
+            <h2 class="panel-title">Admin Team
+                <span style="font-size:.75rem;color:#B5B5B5;font-weight:400;margin-left:8px">
+                    Manage members in the Admins sheet
+                </span>
+            </h2>
+            <div id="admins-list">
+                <p style="color:#B5B5B5;font-size:.875rem">Loading…</p>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/sidebar.js"></script>
+<script>
+"use strict";
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const session = OzoneAuth.requireAuth();
+    if (!session) return;
+
+    document.getElementById("auth-loading").style.display = "none";
+    document.getElementById("app").style.display = "grid";
+
+    renderSidebar("settings");
+    OzoneAuth.populateSidebar(session);
+
+    await loadSettings();
+
+    // Only owners can see the admin team list
+    if (OzoneAuth.isOwner(session)) {
+        document.getElementById("admins-panel").style.display = "block";
+        await loadAdmins();
+    }
+
+    document.getElementById("save-profile-btn").addEventListener("click",  () => saveSection("profile"));
+    document.getElementById("save-hours-btn").addEventListener("click",    () => saveSection("hours"));
+    document.getElementById("save-tax-btn").addEventListener("click",      () => saveSection("tax"));
+    document.getElementById("save-toggles-btn").addEventListener("click",  () => saveSection("toggles"));
+});
+
+async function loadSettings() {
+    try {
+        const data = await OzoneUtils.apiGet({ action: "getSettings" });
+        const s = data.settings || data;
+
+        // Profile
+        if (s.name)     document.getElementById("s-name").value     = s.name;
+        if (s.phone)    document.getElementById("s-phone").value    = s.phone;
+        if (s.email)    document.getElementById("s-email").value    = s.email;
+        if (s.address)  document.getElementById("s-address").value  = s.address;
+        if (s.currencySymbol) document.getElementById("s-currency").value = s.currencySymbol;
+        if (s.defaultLanguage) document.getElementById("s-lang").value    = s.defaultLanguage;
+
+        // Hours
+        if (s.openTime)  document.getElementById("s-open").value  = s.openTime;
+        if (s.closeTime) document.getElementById("s-close").value = s.closeTime;
+
+        // Tax
+        if (s.vat !== undefined)           document.getElementById("s-vat").value     = (s.vat * 100).toFixed(1);
+        if (s.serviceCharge !== undefined) document.getElementById("s-service").value = (s.serviceCharge * 100).toFixed(1);
+
+        // Toggles
+        if (s.ordersEnabled     !== undefined) document.getElementById("t-orders").checked       = s.ordersEnabled;
+        if (s.reservationsEnabled !== undefined) document.getElementById("t-reservations").checked = s.reservationsEnabled;
+        if (s.darkMode          !== undefined) document.getElementById("t-dark").checked          = s.darkMode;
+
+    } catch (err) {
+        OzoneUtils.toast("Settings unavailable: " + err.message, "warn");
+    }
+}
+
+async function saveSection(section) {
+    let payload = { action: "updateSettings", section };
+
+    if (section === "profile") {
+        payload.name            = document.getElementById("s-name").value.trim();
+        payload.phone           = document.getElementById("s-phone").value.trim();
+        payload.email           = document.getElementById("s-email").value.trim();
+        payload.address         = document.getElementById("s-address").value.trim();
+        payload.currencySymbol  = document.getElementById("s-currency").value.trim();
+        payload.defaultLanguage = document.getElementById("s-lang").value;
+    } else if (section === "hours") {
+        payload.openTime  = document.getElementById("s-open").value;
+        payload.closeTime = document.getElementById("s-close").value;
+    } else if (section === "tax") {
+        payload.vat           = Number(document.getElementById("s-vat").value) / 100;
+        payload.serviceCharge = Number(document.getElementById("s-service").value) / 100;
+    } else if (section === "toggles") {
+        payload.ordersEnabled       = document.getElementById("t-orders").checked;
+        payload.reservationsEnabled = document.getElementById("t-reservations").checked;
+        payload.darkMode            = document.getElementById("t-dark").checked;
+    }
+
+    try {
+        const res = await OzoneUtils.apiPost(payload);
+        if (res.success) {
+            OzoneUtils.toast("Settings saved.");
+        } else {
+            OzoneUtils.toast(res.message || "Save failed.", "error");
+        }
+    } catch (err) {
+        OzoneUtils.toast(err.message, "error");
+    }
+}
+
+async function loadAdmins() {
+    try {
+        const data = await OzoneUtils.apiGet({ action: "getAdmins" });
+        const admins = Array.isArray(data) ? data : (data.admins || []);
+        const el = document.getElementById("admins-list");
+
+        if (!admins.length) {
+            el.innerHTML = `<p style="color:#B5B5B5;font-size:.875rem">No admins found in sheet.</p>`;
+            return;
+        }
+
+        el.innerHTML = admins.map(a => `
+            <div class="admin-row">
+                <div class="admin-avatar-sm">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div style="flex:1;min-width:0">
+                    <div style="font-size:.875rem;font-weight:500">${OzoneUtils.escape(a.name || a.email || "—")}</div>
+                    <div class="admin-email">${OzoneUtils.escape(a.email || "")}</div>
+                </div>
+                <span class="badge ${a.role === "Owner" ? "badge-owner" : a.role === "Manager" ? "badge-manager" : "badge-staff"}">
+                    ${OzoneUtils.escape(a.role || "Staff")}
+                </span>
+                <span class="badge ${a.active === true || a.active === "TRUE" ? "badge-success" : "badge-danger"}">
+                    ${a.active === true || a.active === "TRUE" ? "Active" : "Inactive"}
+                </span>
+            </div>`).join("");
+    } catch (err) {
+        OzoneUtils.toast("Could not load admin list: " + err.message, "error");
+    }
+}
+</script>
+</body>
+</html>

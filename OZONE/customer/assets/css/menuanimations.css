@@ -1,0 +1,365 @@
+/*==========================================================
+    OZONE ANIMATIONS SYSTEM
+==========================================================*/
+
+/* Smooth GPU acceleration baseline */
+
+.will-animate{
+
+    will-change:transform, opacity;
+
+    transform:translateZ(0);
+
+}
+
+/* Disable animation helper */
+
+.no-animation *{
+
+    animation:none !important;
+
+    transition:none !important;
+
+}
+/*==========================================================
+    FADE ANIMATIONS
+==========================================================*/
+
+.fade-up{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+}
+
+.fade-down{
+
+    opacity:0;
+
+    transform:translateY(-60px);
+
+}
+
+.fade-left{
+
+    opacity:0;
+
+    transform:translateX(-60px);
+
+}
+
+.fade-right{
+
+    opacity:0;
+
+    transform:translateX(60px);
+
+}
+
+.fade-in{
+
+    opacity:0;
+
+}
+/*==========================================================
+    ACTIVE STATES
+==========================================================*/
+
+.active{
+
+    opacity:1 !important;
+
+    transform:translate(0,0) !important;
+
+    transition:all 1s var(--ease);
+
+}
+/*==========================================================
+    SCALE ANIMATIONS
+==========================================================*/
+
+.zoom-in{
+
+    opacity:0;
+
+    transform:scale(.85);
+
+}
+
+.zoom-out{
+
+    opacity:0;
+
+    transform:scale(1.2);
+
+}
+/*==========================================================
+    STAGGER SYSTEM
+==========================================================*/
+
+.stagger-item{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+}
+
+/* JS will apply delays dynamically */
+/*==========================================================
+    TEXT REVEAL SYSTEM
+==========================================================*/
+
+.reveal-line{
+
+    overflow:hidden;
+
+}
+
+.reveal-line span{
+
+    display:inline-block;
+
+    transform:translateY(120%);
+
+    opacity:0;
+
+}
+/*==========================================================
+    PARALLAX SYSTEM
+==========================================================*/
+
+.parallax-slow{
+
+    transform:translateY(0);
+
+    will-change:transform;
+
+}
+
+.parallax-medium{
+
+    transform:translateY(0);
+
+}
+
+.parallax-fast{
+
+    transform:translateY(0);
+
+}
+/*==========================================================
+    FLOATING ANIMATIONS
+==========================================================*/
+
+.float-slow{
+
+    animation:floatSlow 8s ease-in-out infinite;
+
+}
+
+.float-medium{
+
+    animation:floatMedium 5s ease-in-out infinite;
+
+}
+
+@keyframes floatSlow{
+
+    0%{ transform:translateY(0); }
+
+    50%{ transform:translateY(-25px); }
+
+    100%{ transform:translateY(0); }
+
+}
+
+@keyframes floatMedium{
+
+    0%{ transform:translateY(0); }
+
+    50%{ transform:translateY(-15px); }
+
+    100%{ transform:translateY(0); }
+
+}
+/*==========================================================
+    GLOW ANIMATIONS
+==========================================================*/
+
+.glow-pulse{
+
+    animation:glowPulse 2.5s ease-in-out infinite;
+
+}
+
+@keyframes glowPulse{
+
+    0%{
+
+        box-shadow:0 0 0 rgba(212,175,55,0);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 30px rgba(212,175,55,.25);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 rgba(212,175,55,0);
+
+    }
+
+}
+/*==========================================================
+    SCROLL REVEAL BASE
+==========================================================*/
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+}
+
+.reveal-visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+    transition:1s var(--ease);
+
+}
+/*==========================================================
+    IMAGE MOTION SYSTEM
+==========================================================*/
+
+.img-zoom{
+
+    overflow:hidden;
+
+}
+
+.img-zoom img{
+
+    transform:scale(1.15);
+
+    transition:transform 1.5s ease;
+
+}
+
+.img-zoom:hover img{
+
+    transform:scale(1.05);
+
+}
+/*==========================================================
+    BUTTON ANIMATIONS
+==========================================================*/
+
+.btn-ripple{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn-ripple::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    top:0;
+
+    left:-100%;
+
+    background:rgba(255,255,255,.2);
+
+    transform:skewX(-20deg);
+
+    transition:.6s;
+
+}
+
+.btn-ripple:hover::after{
+
+    left:100%;
+
+}
+/*==========================================================
+    3D CARD MOTION
+==========================================================*/
+
+.hover-3d{
+
+    transition:transform .4s var(--ease);
+
+    transform-style:preserve-3d;
+
+}
+
+.hover-3d:hover{
+
+    transform:
+
+        perspective(1000px)
+
+        rotateX(8deg)
+
+        rotateY(-8deg)
+
+        scale(1.05);
+
+}
+/*==========================================================
+    PAGE TRANSITIONS
+==========================================================*/
+
+.page-enter{
+
+    opacity:0;
+
+    transform:scale(1.05);
+
+}
+
+.page-enter-active{
+
+    opacity:1;
+
+    transform:scale(1);
+
+    transition:1s var(--ease);
+
+}
+
+.page-exit{
+
+    opacity:0;
+
+    transform:scale(.95);
+
+}
+/*==========================================================
+    CURSOR INTERACTIONS
+==========================================================*/
+
+.cursor-hover{
+
+    transform:scale(1.8);
+
+    background:rgba(212,175,55,.2);
+
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZONE Admin — Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- Auth loading screen — hidden once auth confirmed -->
+<div id="auth-loading">
+    <h2>OZONE</h2>
+    <div class="spinner"></div>
+</div>
+
+<div class="admin-layout" id="app" style="display:none">
+
+    <!-- Sidebar (populated by sidebar.js) -->
+    <aside id="sidebar"></aside>
+
+    <!-- Main content -->
+    <main class="admin-main">
+
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle" id="welcome-msg">Welcome back</p>
+            </div>
+            <span id="current-date" style="color:#B5B5B5;font-size:.875rem;"></span>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="cards-grid">
+            <div class="stat-card">
+                <p class="label">Today's Revenue</p>
+                <p class="value" id="stat-revenue">—</p>
+                <p class="trend"><i class="fas fa-arrow-up"></i> Loading…</p>
+            </div>
+            <div class="stat-card">
+                <p class="label">Orders Today</p>
+                <p class="value" id="stat-orders">—</p>
+            </div>
+            <div class="stat-card">
+                <p class="label">Menu Items</p>
+                <p class="value" id="stat-items">—</p>
+            </div>
+            <div class="stat-card">
+                <p class="label">Active Categories</p>
+                <p class="value" id="stat-cats">—</p>
+            </div>
+        </div>
+
+        <!-- Recent orders -->
+        <div class="panel">
+            <h2 class="panel-title">Recent Orders</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-table-body">
+                    <tr><td colspan="5" style="color:#B5B5B5;text-align:center;padding:30px">Loading orders…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/sidebar.js"></script>
+<script>
+"use strict";
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    // ── Auth guard ───────────────────────────────────────
+    const session = OzoneAuth.requireAuth();
+    if (!session) return; // redirects to login
+
+    // ── Reveal app ───────────────────────────────────────
+    document.getElementById("auth-loading").style.display = "none";
+    document.getElementById("app").style.display = "grid";
+
+    // ── Sidebar ──────────────────────────────────────────
+    renderSidebar("dashboard");
+    OzoneAuth.populateSidebar(session);
+
+    // ── Welcome message ──────────────────────────────────
+    document.getElementById("welcome-msg").textContent =
+        `Welcome back, ${session.name?.split(" ")[0] || "Admin"}`;
+    document.getElementById("current-date").textContent =
+        new Date().toLocaleDateString("en-US", { weekday:"long", year:"numeric", month:"long", day:"numeric" });
+
+    // ── Load dashboard stats ─────────────────────────────
+    try {
+        const data = await OzoneUtils.apiGet({ action: "getDashboard" });
+
+        if (data.revenue !== undefined)
+            document.getElementById("stat-revenue").textContent =
+                OzoneUtils.formatCurrency(data.revenue);
+
+        if (data.ordersToday !== undefined)
+            document.getElementById("stat-orders").textContent = data.ordersToday;
+
+        if (data.menuItems !== undefined)
+            document.getElementById("stat-items").textContent = data.menuItems;
+
+        if (data.categories !== undefined)
+            document.getElementById("stat-cats").textContent = data.categories;
+
+        if (Array.isArray(data.recentOrders) && data.recentOrders.length) {
+            const tbody = document.getElementById("orders-table-body");
+            tbody.innerHTML = data.recentOrders.map(o => `
+                <tr>
+                    <td>#${OzoneUtils.escape(String(o.id))}</td>
+                    <td>${OzoneUtils.escape(o.items || "—")}</td>
+                    <td>${OzoneUtils.formatCurrency(o.total || 0)}</td>
+                    <td><span class="badge ${o.status === "Completed" ? "badge-success" :
+                                             o.status === "Pending"   ? "badge-warn"    : "badge-gray"}">
+                        ${OzoneUtils.escape(o.status || "—")}</span></td>
+                    <td style="color:#B5B5B5">${OzoneUtils.escape(o.time || "—")}</td>
+                </tr>`).join("");
+        } else {
+            document.getElementById("orders-table-body").innerHTML =
+                `<tr><td colspan="5" style="color:#B5B5B5;text-align:center;padding:30px">No recent orders.</td></tr>`;
+        }
+
+    } catch (err) {
+        console.warn("Dashboard stats unavailable:", err.message);
+        // Non-critical — page still works without live stats
+    }
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Deployment successfully updated.
+Version 1 on Jun 25, 2026, 4:40 PM
+Deployment ID
+AKfycbzlJ_Gbeungt744hIUwiVwXFqolqsNThVFS6tEIhiLng3_UtpNVSWKykCg_9ZLkhBk
+Web app
+URL
+https://script.google.com/macros/s/AKfycbzlJ_Gbeungt744hIUwiVwXFqolqsNThVFS6tEIhiLng3_UtpNVSWKykCg_9ZLkhBk/exec
+Library
+URL
+https://script.google.com/macros/library/d/1rdxIcNPh-W8g7W_NQjTtjCOeKm9bSZ93rI-Ls-7BWFfJMbmqNIRSCiEn/1

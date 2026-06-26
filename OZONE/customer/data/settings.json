@@ -1,0 +1,230 @@
+[
+  {
+  "application": {
+    "name": "OZONE",
+    "version": "1.0.0",
+    "environment": "production",
+    "defaultLanguage": "en",
+    "supportedLanguages": [
+      "en",
+      "am"
+    ],
+    "defaultTheme": "dark",
+    "currency": "ETB",
+    "currencySymbol": "Br",
+    "timezone": "Africa/Addis_Ababa"
+  },
+
+  "restaurant": {
+    "name": "OZONE",
+    "tagline": {
+      "en": "Luxury Cafe • Restaurant • Bar",
+      "am": "ዘመናዊ ካፌ • ሬስቶራንት • ባር"
+    },
+
+    "logo": "assets/images/logo/logo.svg",
+    "favicon": "assets/images/logo/favicon.png",
+
+    "description": {
+      "en": "Experience luxury dining where taste meets atmosphere.",
+      "am": "ጣዕምና ድባብ የሚገናኙበት የቅንጦት ምግብ ቤት።"
+    }
+  },
+
+  "contact": {
+    "phone": "+251911111111",
+    "alternatePhone": "+251922222222",
+    "email": "info@ozone.com",
+    "website": "https://www.ozone.com",
+
+    "address": {
+      "country": "Ethiopia",
+      "city": "Addis Ababa",
+      "subCity": "",
+      "street": "",
+      "postalCode": ""
+    },
+
+    "map": {
+      "latitude": 8.9806,
+      "longitude": 38.7578,
+      "googleMapsEmbed": ""
+    }
+  },
+
+  "hours": {
+
+    "monday": {
+      "open": "08:00",
+      "close": "23:00"
+    },
+
+    "tuesday": {
+      "open": "08:00",
+      "close": "23:00"
+    },
+
+    "wednesday": {
+      "open": "08:00",
+      "close": "23:00"
+    },
+
+    "thursday": {
+      "open": "08:00",
+      "close": "23:30"
+    },
+
+    "friday": {
+      "open": "08:00",
+      "close": "02:00"
+    },
+
+    "saturday": {
+      "open": "08:00",
+      "close": "02:00"
+    },
+
+    "sunday": {
+      "open": "09:00",
+      "close": "22:00"
+    }
+
+  },
+
+  "tax": {
+    "vat": 0.15,
+    "serviceCharge": 0.10
+  },
+
+  "reservation": {
+
+    "enabled": true,
+
+    "minimumGuests": 1,
+
+    "maximumGuests": 20,
+
+    "advanceBookingDays": 30,
+
+    "minimumNoticeHours": 2
+
+  },
+
+  "ordering": {
+
+    "pickup": true,
+
+    "dineIn": true,
+
+    "delivery": false,
+
+    "kitchenNotes": true,
+
+    "saveForLater": true
+
+  },
+
+  "payments": {
+
+    "cash": true,
+
+    "commercialBank": {
+
+      "enabled": true,
+
+      "accountName": "OZONE",
+
+      "accountNumber": "1000000000000",
+
+      "qrImage": "assets/images/payments/cbe-qr.png"
+
+    },
+
+    "bankOfAbyssinia": {
+
+      "enabled": true,
+
+      "accountName": "OZONE",
+
+      "accountNumber": "2000000000000",
+
+      "qrImage": "assets/images/payments/boa-qr.png"
+
+    }
+
+  },
+
+  "socialMedia": {
+
+    "facebook": "",
+
+    "instagram": "",
+
+    "tiktok": "",
+
+    "telegram": "",
+
+    "youtube": "",
+
+    "linkedin": ""
+
+  },
+
+  "gallery": {
+
+    "heroImage": "assets/images/backgrounds/hero.jpg",
+
+    "defaultFoodImage": "assets/images/foods/default-food.jpg",
+
+    "defaultAvatar": "assets/images/users/avatar.png"
+
+  },
+
+  "features": {
+
+    "darkMode": true,
+
+    "lightMode": true,
+
+    "languageSwitcher": true,
+
+    "wishlist": true,
+
+    "reviews": true,
+
+    "ratings": true,
+
+    "reservation": true,
+
+    "qrOrdering": true,
+
+    "analytics": true,
+
+    "newsletter": true,
+
+    "liveChat": false
+
+  },
+
+  "seo": {
+
+    "title": "OZONE | Luxury Cafe Restaurant Bar",
+
+    "description": "Premium dining experience with café, restaurant and bar.",
+
+    "keywords": [
+      "Cafe",
+      "Restaurant",
+      "Bar",
+      "Luxury Dining",
+      "Digital Menu",
+      "Addis Ababa"
+    ],
+
+    "author": "OZONE",
+
+    "robots": "index,follow"
+
+  }
+}
+]

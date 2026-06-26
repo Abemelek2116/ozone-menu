@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZONE Admin — Categories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div id="auth-loading">
+    <h2>OZONE</h2>
+    <div class="spinner"></div>
+</div>
+
+<div class="admin-layout" id="app" style="display:none">
+
+    <aside id="sidebar"></aside>
+
+    <main class="admin-main">
+
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Categories</h1>
+                <p class="page-subtitle">Manage menu categories</p>
+            </div>
+            <button class="btn btn-primary" id="open-add-form">
+                <i class="fas fa-plus"></i> Add Category
+            </button>
+        </div>
+
+        <!-- Add / Edit form -->
+        <div class="panel" id="cat-form-panel" style="display:none">
+            <h2 class="panel-title" id="form-title">Add Category</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" id="c-name" placeholder="e.g. Cafe">
+                </div>
+                <div class="form-group">
+                    <label>Icon (Font Awesome class)</label>
+                    <input class="form-control" id="c-icon" placeholder="e.g. fa-mug-hot">
+                </div>
+                <div class="form-group">
+                    <label>Color (hex)</label>
+                    <input class="form-control" id="c-color" type="color" value="#D4AF37">
+                </div>
+                <div class="form-group">
+                    <label>Story Order</label>
+                    <input class="form-control" id="c-order" type="number" placeholder="1">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input class="form-control" id="c-description" placeholder="Short description">
+                </div>
+                <div class="form-group">
+                    <label>Active</label>
+                    <select class="form-control" id="c-active">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:16px">
+                <button class="btn btn-primary" id="save-cat-btn">
+                    <i class="fas fa-floppy-disk"></i> Save
+                </button>
+                <button class="btn btn-ghost" id="cancel-form-btn">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Categories table -->
+        <div class="panel">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Icon</th>
+                        <th>Color</th>
+                        <th>Order</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="cat-table-body">
+                    <tr><td colspan="6" style="color:#B5B5B5;text-align:center;padding:30px">Loading…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/sidebar.js"></script>
+<script>
+"use strict";
+
+let _editingId = null;
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const session = OzoneAuth.requireAuth();
+    if (!session) return;
+
+    document.getElementById("auth-loading").style.display = "none";
+    document.getElementById("app").style.display = "grid";
+
+    renderSidebar("categories");
+    OzoneAuth.populateSidebar(session);
+
+    await loadCategories();
+
+    document.getElementById("open-add-form").addEventListener("click", () => {
+        _editingId = null;
+        clearForm();
+        document.getElementById("form-title").textContent = "Add Category";
+        document.getElementById("cat-form-panel").style.display = "block";
+    });
+
+    document.getElementById("cancel-form-btn").addEventListener("click", () => {
+        document.getElementById("cat-form-panel").style.display = "none";
+        _editingId = null;
+    });
+
+    document.getElementById("save-cat-btn").addEventListener("click", saveCategory);
+});
+
+async function loadCategories() {
+    try {
+        const data = await OzoneUtils.apiGet({ action: "getCategories" });
+        renderTable(Array.isArray(data) ? data : (data.categories || []));
+    } catch (err) {
+        OzoneUtils.toast("Failed to load categories: " + err.message, "error");
+    }
+}
+
+function renderTable(items) {
+    const tbody = document.getElementById("cat-table-body");
+    if (!items.length) {
+        tbody.innerHTML = `<tr><td colspan="6" style="color:#B5B5B5;text-align:center;padding:30px">No categories found.</td></tr>`;
+        return;
+    }
+    tbody.innerHTML = items.map(cat => `
+        <tr>
+            <td>${OzoneUtils.escape(cat.name || "—")}</td>
+            <td><i class="fas ${OzoneUtils.escape(cat.icon || "fa-circle")}"></i></td>
+            <td>
+                <span style="display:inline-flex;align-items:center;gap:8px">
+                    <span style="width:16px;height:16px;border-radius:50%;background:${OzoneUtils.escape(cat.color || "#ccc")};display:inline-block"></span>
+                    ${OzoneUtils.escape(cat.color || "—")}
+                </span>
+            </td>
+            <td>${OzoneUtils.escape(String(cat.storyOrder ?? cat.displayOrder ?? "—"))}</td>
+            <td><span class="badge ${cat.available !== false ? "badge-success" : "badge-danger"}">
+                ${cat.available !== false ? "Active" : "Hidden"}</span></td>
+            <td style="display:flex;gap:8px">
+                <button class="btn btn-success" style="padding:6px 12px;font-size:.8rem"
+                        onclick="editCat('${OzoneUtils.escape(String(cat.id || cat.name || ""))}')">
+                    <i class="fas fa-pen"></i>
+                </button>
+                <button class="btn btn-danger" style="padding:6px 12px;font-size:.8rem"
+                        onclick="deleteCat('${OzoneUtils.escape(String(cat.id || cat.name || ""))}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>`).join("");
+}
+
+function clearForm() {
+    document.getElementById("c-name").value        = "";
+    document.getElementById("c-icon").value        = "";
+    document.getElementById("c-color").value       = "#D4AF37";
+    document.getElementById("c-order").value       = "";
+    document.getElementById("c-description").value = "";
+    document.getElementById("c-active").value      = "true";
+}
+
+async function saveCategory() {
+    const name   = document.getElementById("c-name").value.trim();
+    const icon   = document.getElementById("c-icon").value.trim();
+    const color  = document.getElementById("c-color").value;
+    const order  = document.getElementById("c-order").value;
+    const desc   = document.getElementById("c-description").value.trim();
+    const active = document.getElementById("c-active").value === "true";
+
+    if (!name) { OzoneUtils.toast("Category name is required.", "warn"); return; }
+
+    const payload = { action: _editingId ? "updateCategory" : "addCategory",
+                      id: _editingId || "", name, icon, color,
+                      storyOrder: Number(order) || 0, description: desc, available: active };
+    try {
+        const res = await OzoneUtils.apiPost(payload);
+        if (res.success) {
+            OzoneUtils.toast(_editingId ? "Category updated." : "Category added.");
+            document.getElementById("cat-form-panel").style.display = "none";
+            _editingId = null;
+            await loadCategories();
+        } else {
+            OzoneUtils.toast(res.message || "Save failed.", "error");
+        }
+    } catch (err) {
+        OzoneUtils.toast(err.message, "error");
+    }
+}
+
+async function editCat(id) {
+    try {
+        const data = await OzoneUtils.apiGet({ action: "getCategory", id });
+        const cat  = data.category || data;
+        _editingId = id;
+        document.getElementById("c-name").value        = cat.name || "";
+        document.getElementById("c-icon").value        = cat.icon || "";
+        document.getElementById("c-color").value       = cat.color || "#D4AF37";
+        document.getElementById("c-order").value       = cat.storyOrder ?? cat.displayOrder ?? "";
+        document.getElementById("c-description").value = cat.description || "";
+        document.getElementById("c-active").value      = cat.available !== false ? "true" : "false";
+        document.getElementById("form-title").textContent = "Edit Category";
+        document.getElementById("cat-form-panel").style.display = "block";
+        document.getElementById("cat-form-panel").scrollIntoView({ behavior: "smooth" });
+    } catch (err) {
+        OzoneUtils.toast("Could not load category: " + err.message, "error");
+    }
+}
+
+async function deleteCat(id) {
+    if (!confirm("Delete this category? This cannot be undone.")) return;
+    try {
+        const res = await OzoneUtils.apiPost({ action: "deleteCategory", id });
+        if (res.success) {
+            OzoneUtils.toast("Category deleted.");
+            await loadCategories();
+        } else {
+            OzoneUtils.toast(res.message || "Delete failed.", "error");
+        }
+    } catch (err) {
+        OzoneUtils.toast(err.message, "error");
+    }
+}
+</script>
+</body>
+</html>

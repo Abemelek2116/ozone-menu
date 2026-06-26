@@ -1,0 +1,157 @@
+[
+  {
+    "id": "ozn-001",
+    "name": "OZONE Signature Espresso",
+    "category": "cafe",
+    "subcategory": "coffee",
+    "image": "assets/images/foods/espresso.jpg",
+    "price": 4.5,
+    "oldPrice": 5.5,
+    "description": "A bold, aromatic espresso crafted from premium Ethiopian beans.",
+    "longDescription": "Our signature espresso is slow-extracted to preserve deep chocolate notes, floral undertones, and a rich crema finish.",
+    "calories": 80,
+    "preparationTime": "3 min",
+    "ingredients": ["Ethiopian coffee beans", "Filtered water"],
+    "allergens": [],
+    "dietary": ["vegan", "gluten-free"],
+    "popularity": 95,
+    "featured": true,
+    "special": false,
+    "badge": {
+      "type": "best",
+      "text": "Best Seller"
+    },
+    "sizes": [
+      { "label": "Single", "price": 4.5 },
+      { "label": "Double", "price": 6.5 }
+    ],
+    "addons": [
+      { "name": "Extra Shot", "price": 1 },
+      { "name": "Oat Milk", "price": 0.8 }
+    ]
+  },
+
+  {
+    "id": "ozn-002",
+    "name": "Truffle Mushroom Pasta",
+    "category": "restaurant",
+    "subcategory": "main",
+    "image": "assets/images/foods/pasta.jpg",
+    "price": 18,
+    "oldPrice": 22,
+    "description": "Creamy pasta infused with truffle oil and wild mushrooms.",
+    "longDescription": "A luxurious blend of parmesan cream sauce, sautéed wild mushrooms, and aromatic truffle oil.",
+    "calories": 720,
+    "preparationTime": "18 min",
+    "ingredients": ["Pasta", "Mushrooms", "Cream", "Truffle oil", "Parmesan"],
+    "allergens": ["dairy", "gluten"],
+    "dietary": ["vegetarian"],
+    "popularity": 98,
+    "featured": true,
+    "special": true,
+    "badge": {
+      "type": "chef",
+      "text": "Chef Pick"
+    },
+    "sizes": [
+      { "label": "Regular", "price": 18 },
+      { "label": "Large", "price": 24 }
+    ],
+    "addons": [
+      { "name": "Extra Cheese", "price": 2 },
+      { "name": "Grilled Chicken", "price": 4 }
+    ]
+  },
+
+  {
+    "id": "ozn-003",
+    "name": "Signature OZONE Steak",
+    "category": "restaurant",
+    "subcategory": "main",
+    "image": "assets/images/foods/steak.jpg",
+    "price": 28,
+    "description": "Perfectly grilled premium steak with herb butter glaze.",
+    "longDescription": "Aged beef steak grilled to perfection, served with rosemary butter and seasonal vegetables.",
+    "calories": 950,
+    "preparationTime": "25 min",
+    "ingredients": ["Beef steak", "Butter", "Herbs", "Vegetables"],
+    "allergens": ["dairy"],
+    "dietary": [],
+    "popularity": 99,
+    "featured": true,
+    "special": false,
+    "badge": {
+      "type": "best",
+      "text": "Signature"
+    },
+    "sizes": [
+      { "label": "250g", "price": 28 },
+      { "label": "400g", "price": 36 }
+    ],
+    "addons": [
+      { "name": "Garlic Butter", "price": 1.5 },
+      { "name": "Extra Sauce", "price": 2 }
+    ]
+  },
+
+  {
+    "id": "ozn-004",
+    "name": "Golden Citrus Mojito",
+    "category": "bar",
+    "subcategory": "cocktail",
+    "image": "assets/images/foods/mojito.jpg",
+    "price": 9,
+    "description": "Refreshing mint mojito with citrus gold infusion.",
+    "longDescription": "A luxury cocktail blend of fresh mint, lime, sparkling soda, and citrus essence.",
+    "calories": 180,
+    "preparationTime": "5 min",
+    "ingredients": ["Mint", "Lime", "Soda", "Sugar syrup"],
+    "allergens": [],
+    "dietary": ["vegan"],
+    "popularity": 92,
+    "featured": false,
+    "special": true,
+    "badge": {
+      "type": "new",
+      "text": "New"
+    },
+    "sizes": [
+      { "label": "Standard", "price": 9 },
+      { "label": "Large Glass", "price": 12 }
+    ],
+    "addons": [
+      { "name": "Extra Ice", "price": 0 },
+      { "name": "Extra Mint", "price": 0.5 }
+    ]
+  },
+
+  {
+    "id": "ozn-005",
+    "name": "Chocolate Lava Cake",
+    "category": "dessert",
+    "subcategory": "sweet",
+    "image": "assets/images/foods/lava-cake.jpg",
+    "price": 7,
+    "description": "Warm molten chocolate cake with vanilla ice cream.",
+    "longDescription": "Rich dark chocolate cake with a molten center, served warm with Madagascar vanilla ice cream.",
+    "calories": 520,
+    "preparationTime": "8 min",
+    "ingredients": ["Chocolate", "Flour", "Eggs", "Sugar", "Butter"],
+    "allergens": ["dairy", "eggs", "gluten"],
+    "dietary": [],
+    "popularity": 97,
+    "featured": true,
+    "special": false,
+    "badge": {
+      "type": "best",
+      "text": "Popular"
+    },
+    "sizes": [
+      { "label": "Single", "price": 7 }
+    ],
+    "addons": [
+      { "name": "Extra Ice Cream", "price": 1.5 },
+      { "name": "Chocolate Sauce", "price": 1 }
+    ]
+  }
+]

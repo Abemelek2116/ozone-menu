@@ -1,0 +1,265 @@
+{
+  "restaurant": {
+    "name": "OZONE",
+    "version": "1.0.0",
+    "currency": "ETB",
+    "currencySymbol": "Br",
+    "defaultLanguage": "en"
+  },
+
+  "categories": [
+    {
+      "id": "breakfast",
+      "name": {
+        "en": "Breakfast",
+        "am": "ቁርስ"
+      },
+      "description": {
+        "en": "Start your day with handcrafted breakfast favorites.",
+        "am": "ቀንዎን በልዩ የቁርስ ምግቦች ይጀምሩ።"
+      },
+      "icon": "fa-sun",
+      "color": "#D4AF37",
+      "banner": "assets/images/categories/breakfast.jpg",
+      "displayOrder": 1,
+      "featured": true,
+      "available": true,
+      "subcategories": [
+        "Eggs",
+        "Toast",
+        "Pastries",
+        "Pancakes",
+        "Omelettes",
+        "Healthy Breakfast"
+      ]
+    },
+
+    {
+      "id": "lunch",
+      "name": {
+        "en": "Lunch",
+        "am": "ምሳ"
+      },
+      "description": {
+        "en": "Fresh meals prepared with premium ingredients.",
+        "am": "በጥራት የተዘጋጁ ምሳዎች።"
+      },
+      "icon": "fa-utensils",
+      "color": "#C89B3C",
+      "banner": "assets/images/categories/lunch.jpg",
+      "displayOrder": 2,
+      "featured": true,
+      "available": true,
+      "subcategories": [
+        "Steak",
+        "Chicken",
+        "Seafood",
+        "Pasta",
+        "Rice",
+        "Pizza",
+        "Burgers",
+        "Salads"
+      ]
+    },
+
+    {
+      "id": "dinner",
+      "name": {
+        "en": "Dinner",
+        "am": "እራት"
+      },
+      "description": {
+        "en": "Elegant dining experiences crafted by our chefs.",
+        "am": "በሼፎቻችን የተዘጋጀ የእራት ልምድ።"
+      },
+      "icon": "fa-bowl-food",
+      "color": "#B8860B",
+      "banner": "assets/images/categories/dinner.jpg",
+      "displayOrder": 3,
+      "featured": true,
+      "available": true,
+      "subcategories": [
+        "Signature Dishes",
+        "Premium Steak",
+        "Lamb",
+        "Seafood",
+        "Grill",
+        "Chef Specials"
+      ]
+    },
+
+    {
+      "id": "desserts",
+      "name": {
+        "en": "Desserts",
+        "am": "ጣፋጭ"
+      },
+      "description": {
+        "en": "Luxury desserts crafted to perfection.",
+        "am": "በጥንቃቄ የተዘጋጁ ጣፋጮች።"
+      },
+      "icon": "fa-cake-candles",
+      "color": "#E8C76A",
+      "banner": "assets/images/categories/dessert.jpg",
+      "displayOrder": 4,
+      "featured": true,
+      "available": true,
+      "subcategories": [
+        "Cake",
+        "Ice Cream",
+        "Chocolate",
+        "Fruit",
+        "Signature Desserts"
+      ]
+    },
+
+    {
+      "id": "coffee",
+      "name": {
+        "en": "Coffee",
+        "am": "ቡና"
+      },
+      "description": {
+        "en": "Freshly roasted specialty coffee.",
+        "am": "በአዲስ የተጠበሰ ልዩ ቡና።"
+      },
+      "icon": "fa-mug-hot",
+      "color": "#8B5A2B",
+      "banner": "assets/images/categories/coffee.jpg",
+      "displayOrder": 5,
+      "featured": true,
+      "available": true,
+      "subcategories": [
+        "Espresso",
+        "Latte",
+        "Cappuccino",
+        "Macchiato",
+        "Mocha",
+        "Cold Brew"
+      ]
+    },
+
+    {
+      "id": "tea",
+      "name": {
+        "en": "Tea",
+        "am": "ሻይ"
+      },
+      "description": {
+        "en": "Premium loose-leaf teas and herbal infusions.",
+        "am": "ጥራት ያላቸው ሻዮች።"
+      },
+      "icon": "fa-mug-saucer",
+      "color": "#1AA37A",
+      "banner": "assets/images/categories/tea.jpg",
+      "displayOrder": 6,
+      "featured": false,
+      "available": true,
+      "subcategories": [
+        "Black Tea",
+        "Green Tea",
+        "Herbal Tea",
+        "Specialty Tea"
+      ]
+    },
+
+    {
+      "id": "cocktails",
+      "name": {
+        "en": "Cocktails",
+        "am": "ኮክቴሎች"
+      },
+      "description": {
+        "en": "Signature cocktails created by expert mixologists.",
+        "am": "በሙያተኛ ባርቴንደሮች የተዘጋጁ ኮክቴሎች።"
+      },
+      "icon": "fa-martini-glass-citrus",
+      "color": "#CFA54A",
+      "banner": "assets/images/categories/cocktails.jpg",
+      "displayOrder": 7,
+      "featured": true,
+      "available": true,
+      "subcategories": [
+        "Classic",
+        "Signature",
+        "Frozen",
+        "Mocktails"
+      ]
+    },
+
+    {
+      "id": "wine",
+      "name": {
+        "en": "Wine",
+        "am": "ወይን"
+      },
+      "description": {
+        "en": "Premium international and local wines.",
+        "am": "የአገር ውስጥና የውጭ ወይኖች።"
+      },
+      "icon": "fa-wine-glass",
+      "color": "#7A1F3D",
+      "banner": "assets/images/categories/wine.jpg",
+      "displayOrder": 8,
+      "featured": false,
+      "available": true,
+      "subcategories": [
+        "Red Wine",
+        "White Wine",
+        "Rosé",
+        "Sparkling"
+      ]
+    },
+
+    {
+      "id": "spirits",
+      "name": {
+        "en": "Premium Spirits",
+        "am": "ስፒሪቶች"
+      },
+      "description": {
+        "en": "Luxury whiskey, gin, rum and vodka collection.",
+        "am": "ልዩ መጠጦች።"
+      },
+      "icon": "fa-whiskey-glass",
+      "color": "#A67C52",
+      "banner": "assets/images/categories/spirits.jpg",
+      "displayOrder": 9,
+      "featured": false,
+      "available": true,
+      "subcategories": [
+        "Whiskey",
+        "Vodka",
+        "Gin",
+        "Rum",
+        "Tequila",
+        "Brandy"
+      ]
+    },
+
+    {
+      "id": "soft-drinks",
+      "name": {
+        "en": "Soft Drinks",
+        "am": "ለስላሳ መጠጦች"
+      },
+      "description": {
+        "en": "Refreshing beverages and juices.",
+        "am": "ቀዝቃዛ መጠጦች።"
+      },
+      "icon": "fa-glass-water",
+      "color": "#3A9BDC",
+      "banner": "assets/images/categories/softdrinks.jpg",
+      "displayOrder": 10,
+      "featured": false,
+      "available": true,
+      "subcategories": [
+        "Fresh Juice",
+        "Smoothies",
+        "Soda",
+        "Water",
+        "Energy Drinks"
+      ]
+    }
+  ]
+}
