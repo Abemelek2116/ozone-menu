@@ -24,6 +24,8 @@ class OzoneApp {
 
         this.mobileMenu = document.getElementById("mobileMenu");
 
+        this.mobileMenuBackdrop = document.getElementById("mobileMenuBackdrop");
+
         this.openMenu = document.getElementById("openMenu");
 
         this.closeMenu = document.getElementById("closeMenu");
@@ -98,15 +100,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 OzoneApp.prototype.loadingScreen = function () {
 
-    window.addEventListener("load", () => {
+    const hideLoader = () => {
+
+        if(!this.loader || this.loader.classList.contains("loader-hide")) return;
+
+        this.loader.classList.add("loader-hide");
 
         setTimeout(() => {
 
-            this.loader.classList.add("loader-hide");
+            this.loader.style.display = "none";
 
-        }, 2800);
+        }, 1000);
 
-    });
+    };
+
+    window.addEventListener("load", () => setTimeout(hideLoader, 2800));
+
+    // Fallback if load event is delayed (e.g. slow video)
+    setTimeout(hideLoader, 4500);
 
 };
 /*=========================================================
@@ -115,7 +126,9 @@ OzoneApp.prototype.loadingScreen = function () {
 
 OzoneApp.prototype.initializeLenis = function () {
 
-    const lenis = new Lenis({
+    if(typeof Lenis === "undefined") return;
+
+    this.lenis = new Lenis({
 
         duration:1.2,
 
@@ -128,6 +141,8 @@ OzoneApp.prototype.initializeLenis = function () {
         infinite:false
 
     });
+
+    const lenis = this.lenis;
 
     function raf(time){
 
@@ -196,30 +211,121 @@ OzoneApp.prototype.progress = function(){
     MOBILE MENU
 ==========================================================*/
 
+OzoneApp.prototype.syncMobileNav = function(){
+
+    const desktopLinks = document.querySelectorAll(".nav-links a");
+    const mobileNav = this.mobileMenu?.querySelector(".mobile-nav-links");
+
+    if(!desktopLinks.length || !mobileNav) return;
+
+    mobileNav.innerHTML = "";
+
+    desktopLinks.forEach(link => {
+
+        const item = document.createElement("a");
+        item.href = link.getAttribute("href") || "#";
+        if(link.dataset.i18n) item.dataset.i18n = link.dataset.i18n;
+        item.textContent = link.textContent.trim();
+        mobileNav.appendChild(item);
+
+    });
+
+    window.OZONE_I18N?.apply();
+
+};
+
+OzoneApp.prototype.openMobileMenu = function(){
+
+    if(!this.mobileMenu || !this.openMenu) return;
+
+    this.mobileMenu.classList.add("active");
+    this.mobileMenuBackdrop?.classList.add("active");
+    this.openMenu.setAttribute("aria-expanded", "true");
+    this.mobileMenu.setAttribute("aria-hidden", "false");
+    this.mobileMenuBackdrop?.setAttribute("aria-hidden", "false");
+    document.body.classList.add("menu-open");
+    document.body.style.overflow = "hidden";
+    this.lenis?.stop();
+
+};
+
+OzoneApp.prototype.closeMobileMenu = function(){
+
+    if(!this.mobileMenu || !this.openMenu) return;
+
+    this.mobileMenu.classList.remove("active");
+    this.mobileMenuBackdrop?.classList.remove("active");
+    this.openMenu.setAttribute("aria-expanded", "false");
+    this.mobileMenu.setAttribute("aria-hidden", "true");
+    this.mobileMenuBackdrop?.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("menu-open");
+    document.body.style.overflow = "";
+    this.lenis?.start();
+
+};
+
+OzoneApp.prototype.handleMobileNavClick = function(e, link){
+
+    const href = link.getAttribute("href") || "#";
+
+    this.closeMobileMenu();
+
+    if(href.startsWith("#")){
+
+        e.preventDefault();
+
+        if(href === "#" || href === ""){
+
+            if(this.lenis) this.lenis.scrollTo(0);
+            else window.scrollTo({ top:0, behavior:"smooth" });
+
+            return;
+
+        }
+
+        const target = document.querySelector(href);
+
+        if(!target) return;
+
+        if(this.lenis) this.lenis.scrollTo(target, { offset:-90 });
+        else target.scrollIntoView({ behavior:"smooth", block:"start" });
+
+    }
+
+};
+
 OzoneApp.prototype.mobileNavigation = function(){
 
-    if(!this.openMenu) return;
+    if(!this.openMenu || !this.mobileMenu) return;
 
-    this.openMenu.addEventListener("click",()=>{
+    this.syncMobileNav();
 
-        this.mobileMenu.classList.add("active");
+    const mobileNav = this.mobileMenu.querySelector(".mobile-nav-links");
+
+    this.openMenu.addEventListener("click", (e) => {
+
+        e.preventDefault();
+        e.stopPropagation();
+        this.openMobileMenu();
 
     });
 
-    this.closeMenu.addEventListener("click",()=>{
+    this.closeMenu?.addEventListener("click", (e) => {
 
-        this.mobileMenu.classList.remove("active");
+        e.preventDefault();
+        this.closeMobileMenu();
 
     });
 
-    // Close when clicking a nav link inside the menu
-    this.mobileMenu.querySelectorAll("nav a").forEach(link => {
+    this.mobileMenuBackdrop?.addEventListener("click", () => this.closeMobileMenu());
 
-        link.addEventListener("click", () => {
+    mobileNav?.addEventListener("click", (e) => {
 
-            this.mobileMenu.classList.remove("active");
+        const link = e.target.closest("a");
 
-        });
+        if(!link || !mobileNav.contains(link)) return;
+
+        this.handleMobileNavClick(e, link);
 
     });
 
@@ -519,9 +625,9 @@ OzoneApp.prototype.shortcuts=function(){
 
     document.addEventListener("keydown",(e)=>{
 
-        if(e.key==="Escape"){
+        if(e.key==="Escape" && this.mobileMenu?.classList.contains("active")){
 
-            this.mobileMenu?.classList.remove("active");
+            this.closeMobileMenu();
 
         }
 
