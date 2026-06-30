@@ -60,14 +60,14 @@
             <ul class="nav-links">
                 <li><a href="#" data-i18n="nav.home">Home</a></li>
                 <li><a href="pages/menu.html" data-i18n="nav.menu">Menu</a></li>
-                <li><a href="#" data-i18n="nav.gallery">Gallery</a></li>
+                <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
 
             <div class="nav-right">
                 <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
                 <button id="languageToggle">EN | አማ</button>
-                <button class="mobile-menu" id="openMenu"><i class="fa-solid fa-bars"></i></button>
+                <button type="button" class="mobile-menu" id="openMenu" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
             </div>
 
         </nav>
@@ -93,8 +93,8 @@
             </h1>
             <div class="typing-container"><span id="typing-text"></span></div>
             <div class="hero-buttons">
-                <a href="#experience" class="btn-primary" data-i18n="hero.explore">Explore Menu</a>
-                <a href="#reservation" class="btn-secondary" data-i18n="hero.reserve">Reserve Table</a>
+                <a href="pages/menu.html" class="btn-primary" data-i18n="hero.explore">Explore Menu</a>
+                <a href="#contact" class="btn-secondary" data-i18n="hero.reserve">Reserve Table</a>
             </div>
         </div>
 
@@ -323,13 +323,13 @@
             <div class="reservation-content">
                 <span data-i18n="res.span">Luxury Awaits</span>
                 <h2 data-i18n="res.title">Ready<br>For An<br>Unforgettable Evening?</h2>
-                <a href="#" class="btn-primary" data-i18n="res.btn">Reserve Your Table</a>
+                <a href="#contact" class="btn-primary" data-i18n="res.btn">Reserve Your Table</a>
             </div>
         </div>
     </section>
 
-    <!-- INSTAGRAM PREVIEW -->
-    <section class="instagram-feed">
+    <!-- INSTAGRAM PREVIEW / GALLERY -->
+    <section id="gallery" class="instagram-feed">
         <div class="container">
             <div class="section-header">
                 <span data-i18n="ig.span">Follow OZONE</span>
@@ -365,13 +365,6 @@
                     <p data-i18n="footer.days">Monday – Sunday</p>
                     <p data-i18n="footer.time">7:00 AM – 12:00 AM</p>
                 </div>
-                <div>
-                    <h3 data-i18n="footer.newsletter">Newsletter</h3>
-                    <form>
-                        <input type="email" data-i18n="footer.email" placeholder="Email Address">
-                        <button data-i18n="footer.subscribe">Subscribe</button>
-                    </form>
-                </div>
             </div>
             <div class="footer-bottom">
                 <p data-i18n="footer.copy">© 2026 OZONE. Crafted with elegance.</p>
@@ -384,19 +377,16 @@
     <a href="#" id="whatsappButton"><i class="fa-brands fa-whatsapp"></i></a>
 
     <!-- MOBILE MEGA MENU -->
-    <aside id="mobileMenu" class="mobile-mega-menu">
-        <button id="closeMenu" class="close-menu"><i class="fa-solid fa-xmark"></i></button>
+    <div id="mobileMenuBackdrop" class="mobile-menu-backdrop" aria-hidden="true"></div>
+    <aside id="mobileMenu" class="mobile-mega-menu" aria-hidden="true">
+        <button type="button" id="closeMenu" class="close-menu" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
         <div class="mobile-menu-content">
             <h2>OZONE</h2>
-            <nav>
-                <a href="#" data-i18n="mob.home">Home</a>
-                <a href="#experience" data-i18n="mob.experience">Experience</a>
-                <a href="#cafe" data-i18n="mob.cafe">Cafe</a>
-                <a href="#restaurant" data-i18n="mob.restaurant">Restaurant</a>
-                <a href="#bar" data-i18n="mob.bar">Bar</a>
-                <a href="pages/menu.html" data-i18n="mob.menu">Menu</a>
-                <a href="#reservation" data-i18n="mob.reservation">Reservation</a>
-                <a href="#contact" data-i18n="mob.contact">Contact</a>
+            <nav class="mobile-nav-links">
+                <a href="#" data-i18n="nav.home">Home</a>
+                <a href="pages/menu.html" data-i18n="nav.menu">Menu</a>
+                <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+                <a href="#contact" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="mobile-menu-actions">
                 <button id="mobileThemeToggle"><i class="fa-solid fa-moon"></i></button>
