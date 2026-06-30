@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZONE | Secure Checkout</title>
+    <meta name="description" content="Complete your OZONE order with secure bank transfer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../assets/css/menustyles.css">
+    <link rel="stylesheet" href="../assets/css/menuanimations.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+
+<body class="checkout-body">
+
+    <div class="scroll-progress"></div>
+
+    <div class="checkout-ambient">
+        <div class="checkout-orb orb-a parallax-slow"></div>
+        <div class="checkout-orb orb-b parallax-medium"></div>
+        <div class="checkout-orb orb-c parallax-slow"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="glass-navbar">
+        <a href="../Index.html" class="logo">OZONE</a>
+        <ul class="nav-links">
+            <li><a href="../Index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="menu.html" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="../Index.html#gallery" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="../Index.html#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <button id="themeToggle" type="button" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+            <button id="languageSwitcher" type="button">EN | አማ</button>
+            <button type="button" class="mobile-menu" id="openMenu" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="checkout-hero">
+        <div class="checkout-hero-overlay"></div>
+        <div class="checkout-hero-content fade-up">
+            <span data-i18n="co.hero.span">Secure Payment</span>
+            <h1><span data-i18n="co.hero.line1">Complete Your</span><br><em data-i18n="co.hero.line2">Luxury Order</em></h1>
+            <p data-i18n="co.hero.p">Choose your preferred bank or mobile wallet, transfer the total amount, and confirm your payment.</p>
+        </div>
+    </header>
+
+    <!-- PROGRESS -->
+    <div class="checkout-progress fade-up">
+        <div class="checkout-step active">
+            <div class="circle"><i class="fas fa-receipt"></i></div>
+            <span data-i18n="co.step.order">Order</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="checkout-step active">
+            <div class="circle"><i class="fas fa-building-columns"></i></div>
+            <span data-i18n="co.step.pay">Payment</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="checkout-step">
+            <div class="circle"><i class="fas fa-check"></i></div>
+            <span data-i18n="co.step.done">Confirm</span>
+        </div>
+    </div>
+
+    <main class="checkout-page container-wide">
+
+        <!-- LEFT: PAYMENT -->
+        <section class="checkout-main">
+
+            <div class="checkout-card card-3d fade-up">
+                <div class="section-title checkout-section-head">
+                    <span data-i18n="co.banks.span">Payment Methods</span>
+                    <h2 data-i18n="co.banks.h2">Select Your Bank</h2>
+                </div>
+                <p class="checkout-note" id="paymentInstructions" data-i18n="co.instructions">Transfer the exact order total, then upload your payment receipt below.</p>
+
+                <div id="bankGrid" class="bank-grid" role="tablist" aria-label="Payment methods"></div>
+            </div>
+
+            <div id="paymentDetail" class="checkout-card payment-detail card-3d fade-up hidden-panel">
+                <div class="payment-detail-head">
+                    <div id="selectedBankBadge" class="bank-badge"></div>
+                    <h3 id="selectedBankName">—</h3>
+                    <p id="selectedBankType" class="bank-type-label"></p>
+                </div>
+
+                <div class="payment-detail-body">
+                    <div class="account-fields">
+                        <div class="account-field">
+                            <label data-i18n="co.account.name">Account Name</label>
+                            <div class="copy-row">
+                                <span id="accountNameValue">—</span>
+                                <button type="button" class="copy-btn" data-copy-target="accountNameValue" aria-label="Copy account name">
+                                    <i class="fas fa-copy"></i>
+                                    <span data-i18n="co.copy">Copy</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="account-field">
+                            <label data-i18n="co.account.number">Account Number</label>
+                            <div class="copy-row">
+                                <code id="accountNumberValue">—</code>
+                                <button type="button" class="copy-btn" data-copy-target="accountNumberValue" aria-label="Copy account number">
+                                    <i class="fas fa-copy"></i>
+                                    <span data-i18n="co.copy">Copy</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="account-field amount-due">
+                            <label data-i18n="co.amount.due">Amount to Transfer</label>
+                            <strong id="amountDueValue">—</strong>
+                            <button type="button" class="copy-btn copy-btn--gold" data-copy-target="amountDueValue" aria-label="Copy amount">
+                                <i class="fas fa-copy"></i>
+                                <span data-i18n="co.copy.amount">Copy Amount</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="qr-panel card-3d">
+                        <span class="qr-label" data-i18n="co.qr.label">Scan to Pay</span>
+                        <div class="qr-box qr-glow">
+                            <img id="qrImage" src="" alt="Payment QR code">
+                        </div>
+                        <p class="qr-hint" data-i18n="co.qr.hint">Scan with your banking app or mobile wallet</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-card card-3d fade-up">
+                <div class="section-title checkout-section-head">
+                    <span data-i18n="co.receipt.span">Confirmation</span>
+                    <h2 data-i18n="co.receipt.h2">Upload Payment Receipt</h2>
+                </div>
+                <label class="upload-area" id="uploadArea">
+                    <input type="file" id="receiptUpload" accept="image/*,.pdf" hidden>
+                    <i class="fas fa-cloud-arrow-up"></i>
+                    <p data-i18n="co.receipt.drop">Drop your receipt here or click to browse</p>
+                    <small data-i18n="co.receipt.formats">PNG, JPG or PDF — max 5MB</small>
+                </label>
+                <div id="receiptPreview" class="receipt-preview hidden-panel"></div>
+                <button type="button" id="confirmPaymentBtn" class="btn-primary checkout-confirm-btn" disabled data-i18n="co.confirm">I Have Completed Payment</button>
+            </div>
+
+        </section>
+
+        <!-- RIGHT: ORDER SUMMARY -->
+        <aside class="checkout-sidebar fade-right">
+            <div class="checkout-card order-summary-card card-3d sticky-summary">
+                <div class="section-title checkout-section-head">
+                    <span data-i18n="co.summary.span">Your Order</span>
+                    <h2 data-i18n="co.summary.h2">Order Summary</h2>
+                </div>
+                <ul id="orderItemsList" class="order-items-list"></ul>
+                <div class="order-totals">
+                    <div><span data-i18n="mp.cart.sub">Subtotal</span><span id="summarySubtotal">—</span></div>
+                    <div><span data-i18n="mp.cart.vat">VAT</span><span id="summaryVat">—</span></div>
+                    <div><span data-i18n="mp.cart.service">Service</span><span id="summaryService">—</span></div>
+                    <div class="grand-total"><strong data-i18n="mp.cart.total">Total</strong><strong id="summaryTotal">—</strong></div>
+                </div>
+                <a href="menu.html" class="btn-secondary checkout-back-btn" data-i18n="co.back.menu">← Back to Menu</a>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- SUCCESS MODAL -->
+    <div id="successModal" class="checkout-success-modal hidden-panel" aria-hidden="true">
+        <div class="success-backdrop"></div>
+        <div class="success-card card-3d zoom-in">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h2 data-i18n="co.success.title">Payment Submitted</h2>
+            <p data-i18n="co.success.p">Thank you! We will verify your transfer and confirm your order shortly.</p>
+            <a href="../Index.html" class="btn-primary" data-i18n="co.success.home">Return Home</a>
+            <a href="menu.html" class="btn-secondary" data-i18n="co.success.menu">Order Again</a>
+        </div>
+    </div>
+
+    <div id="checkoutToast" class="checkout-toast" aria-live="polite"></div>
+
+    <footer id="contact">
+        <div class="footer-logo">OZONE</div>
+        <p data-i18n="mp.footer.p">Luxury Cafe • Restaurant • Bar</p>
+    </footer>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenuBackdrop" class="mobile-menu-backdrop" aria-hidden="true"></div>
+    <aside id="mobileMenu" class="mobile-mega-menu" aria-hidden="true">
+        <button type="button" id="closeMenu" class="close-menu" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+        <div class="mobile-menu-content">
+            <h2>OZONE</h2>
+            <nav class="mobile-nav-links">
+                <a href="../Index.html" data-i18n="nav.home">Home</a>
+                <a href="menu.html" data-i18n="nav.menu">Menu</a>
+                <a href="../Index.html#gallery" data-i18n="nav.gallery">Gallery</a>
+                <a href="../Index.html#contact" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="mobile-menu-actions">
+                <button id="mobileThemeToggle" type="button"><i class="fas fa-moon"></i></button>
+                <button id="mobileLangToggle" type="button">EN | አማ</button>
+            </div>
+        </div>
+    </aside>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+    <script src="../assets/js/menutheme.js"></script>
+    <script src="../assets/js/menucursor.js"></script>
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/mobileMenu.js"></script>
+    <script src="../assets/js/checkout.js"></script>
+
+</body>
+</html>
