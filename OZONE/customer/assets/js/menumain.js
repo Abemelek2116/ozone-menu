@@ -5,26 +5,33 @@
 gsap.registerPlugin(ScrollTrigger);
 
 /* Smooth scroll engine (Lenis) */
-const lenis = new Lenis({
+let lenis = null;
 
-    duration: 1.2,
+if(typeof Lenis !== "undefined"){
 
-    smoothWheel: true,
+    lenis = new Lenis({
 
-    smoothTouch: false
+        duration: 1.2,
 
-});
+        smoothWheel: true,
 
-/* Sync Lenis with GSAP */
-function raf(time){
+        smoothTouch: false
 
-    lenis.raf(time);
+    });
+
+    window.OZONE_LENIS = lenis;
+
+    function raf(time){
+
+        lenis.raf(time);
+
+        requestAnimationFrame(raf);
+
+    }
 
     requestAnimationFrame(raf);
 
 }
-
-requestAnimationFrame(raf);
 /*==========================================================
     LUXURY LOADER
 ==========================================================*/
@@ -39,7 +46,25 @@ window.addEventListener("load", () => {
 
         loader.classList.add("hidden");
 
+        setTimeout(() => {
+
+            loader.style.display = "none";
+
+        }, 1000);
+
     }, 3000);
+
+    setTimeout(() => {
+
+        if(!loader.classList.contains("hidden")){
+
+            loader.classList.add("hidden");
+
+            loader.style.display = "none";
+
+        }
+
+    }, 4500);
 
 });
 /*==========================================================
@@ -236,3 +261,9 @@ document.querySelectorAll(".card-3d").forEach(card => {
 ==========================================================*/
 
 console.log("OZONE Luxury Engine Initialized ✨");
+
+if(typeof OzoneMobileMenu !== "undefined"){
+
+    window.OZONE_MOBILE_MENU = new OzoneMobileMenu({ lenis }).init();
+
+}
