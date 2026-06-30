@@ -1,0 +1,142 @@
+{
+  "accountHolder": "OZONE Luxury Dining",
+  "currency": "ETB",
+  "instructions": {
+    "en": "Transfer the exact order total, then upload your payment receipt below or send it via WhatsApp.",
+    "am": "የትዕዛዝዎን ሙሉ ገንዘብ ያስተላልፉ፣ ከዚያ የክፍያ ደረሰኝዎን ከዚህ በታች ይስቀሉ ወይም በ WhatsApp ይላኩ።"
+  },
+  "banks": [
+    {
+      "id": "cbe",
+      "name": "Commercial Bank of Ethiopia",
+      "shortName": "CBE",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "1000123456789",
+      "qrImage": "",
+      "brandColor": "#1a4f8b",
+      "icon": "fa-building-columns"
+    },
+    {
+      "id": "boa",
+      "name": "Bank of Abyssinia",
+      "shortName": "Abyssinia",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "2000987654321",
+      "qrImage": "",
+      "brandColor": "#c41e3a",
+      "icon": "fa-landmark"
+    },
+    {
+      "id": "awash",
+      "name": "Awash Bank",
+      "shortName": "Awash",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "0130012345678",
+      "qrImage": "",
+      "brandColor": "#f47b20",
+      "icon": "fa-building-columns"
+    },
+    {
+      "id": "dashen",
+      "name": "Dashen Bank",
+      "shortName": "Dashen",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "0123456789012",
+      "qrImage": "",
+      "brandColor": "#00529b",
+      "icon": "fa-building-columns"
+    },
+    {
+      "id": "telebirr",
+      "name": "Telebirr",
+      "shortName": "Telebirr",
+      "type": "mobile",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "0911234567",
+      "qrImage": "",
+      "brandColor": "#78be20",
+      "icon": "fa-mobile-screen-button"
+    },
+    {
+      "id": "cbebirr",
+      "name": "CBE Birr",
+      "shortName": "CBE Birr",
+      "type": "mobile",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "0912345678",
+      "qrImage": "",
+      "brandColor": "#7b2cbf",
+      "icon": "fa-wallet"
+    },
+    {
+      "id": "nib",
+      "name": "Nib International Bank",
+      "shortName": "NIB",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "3000123456789",
+      "qrImage": "",
+      "brandColor": "#006341",
+      "icon": "fa-building-columns"
+    },
+    {
+      "id": "hibret",
+      "name": "Hibret Bank",
+      "shortName": "Hibret",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "4000123456789",
+      "qrImage": "",
+      "brandColor": "#00843d",
+      "icon": "fa-landmark"
+    },
+    {
+      "id": "wegagen",
+      "name": "Wegagen Bank",
+      "shortName": "Wegagen",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "5000123456789",
+      "qrImage": "",
+      "brandColor": "#e31837",
+      "icon": "fa-building-columns"
+    },
+    {
+      "id": "zemen",
+      "name": "Zemen Bank",
+      "shortName": "Zemen",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "6000123456789",
+      "qrImage": "",
+      "brandColor": "#003da5",
+      "icon": "fa-building-columns"
+    },
+    {
+      "id": "coop",
+      "name": "Cooperative Bank of Oromia",
+      "shortName": "Coop Bank",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "7000123456789",
+      "qrImage": "",
+      "brandColor": "#2e7d32",
+      "icon": "fa-building-columns"
+    },
+    {
+      "id": "enat",
+      "name": "Enat Bank",
+      "shortName": "Enat",
+      "type": "bank",
+      "accountName": "OZONE Luxury Dining",
+      "accountNumber": "8000123456789",
+      "qrImage": "",
+      "brandColor": "#d81b60",
+      "icon": "fa-building-columns"
+    }
+  ]
+}
