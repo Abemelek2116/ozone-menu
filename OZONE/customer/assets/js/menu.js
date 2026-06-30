@@ -61,6 +61,13 @@ class OzoneMenu {
     UI TEMPLATE RENDERING PROTOTYPES (Collision-Free)
 ==========================================================*/
 
+OzoneMenu.prototype.assetUrl = function (path) {
+    if (!path) return "";
+    if (/^(https?:|\/)/.test(path)) return path;
+    const prefix = window.location.pathname.includes("/pages/") ? "../" : "";
+    return `${prefix}${path}`;
+};
+
 // Generates the standard food card item layout for grids
 OzoneMenu.prototype.renderFoodCard = function (item, lang = "en", currencySymbol = "ETB") {
     const escape = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
@@ -84,7 +91,7 @@ OzoneMenu.prototype.renderFoodCard = function (item, lang = "en", currencySymbol
     return `
         <div class="food-card hover-3d" data-id="${item.id}">
             <div class="image">
-                <img src="../${fallbackImg}" alt="${escape(name)}" loading="lazy"
+                <img src="${this.assetUrl(fallbackImg)}" alt="${escape(name)}" loading="lazy"
                      onerror="this.style.opacity='0.3'">
                 ${badgeHTML}
             </div>
@@ -136,7 +143,7 @@ OzoneMenu.prototype.renderFoodModal = function (item, lang = "en", currencySymbo
             <div class="modal-container" style="grid-template-columns:1fr;max-width:520px">
                 <button class="modal-close" style="position:absolute;top:15px;right:15px;background:rgba(255,255,255,.08);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:2">&times;</button>
                 <div class="modal-info" style="position:relative">
-                    <img id="modalMainImage" src="../${fallbackImg}" alt="${escape(name)}"
+                    <img id="modalMainImage" src="${this.assetUrl(fallbackImg)}" alt="${escape(name)}"
                          style="width:100%;max-height:240px;object-fit:cover;border-radius:16px;margin-bottom:15px"
                          onerror="this.style.display='none'">
                     <h2 style="font-size:1.6rem;margin-bottom:6px">${escape(name)}</h2>
