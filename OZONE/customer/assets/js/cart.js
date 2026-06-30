@@ -91,6 +91,12 @@ OzoneCart.prototype.attachEvents = function () {
             if (action === "remove") this.remove(id, size);
         });
     }
+
+    if (this.elements.checkoutBtn) {
+        this.elements.checkoutBtn.addEventListener("click", e => {
+            if (!this.items.length) e.preventDefault();
+        });
+    }
 };
 
 /*=========================================================
