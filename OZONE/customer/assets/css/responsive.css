@@ -204,11 +204,11 @@
     MENU BUTTON APPEARS
 ==========================================================*/
 
-@media (max-width:1024px){
+    @media (max-width:1024px){
 
     .mobile-menu{
 
-        display:flex;
+        display:inline-flex;
 
     }
 
@@ -1658,7 +1658,8 @@ select{
 
     }
 
-    .mobile-menu-content nav a{
+    .mobile-menu-content nav a,
+    .mobile-nav-links a{
 
         font-size:1.1rem;
         padding:13px 0;
@@ -1756,7 +1757,8 @@ select{
 
     }
 
-    .mobile-menu-content nav a{
+    .mobile-menu-content nav a,
+    .mobile-nav-links a{
 
         font-size:1rem;
 
