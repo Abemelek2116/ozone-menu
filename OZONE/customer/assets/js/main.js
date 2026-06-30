@@ -22,13 +22,9 @@ class OzoneApp {
 
         this.progressBar = document.getElementById("progress-bar");
 
-        this.mobileMenu = document.getElementById("mobileMenu");
-
-        this.mobileMenuBackdrop = document.getElementById("mobileMenuBackdrop");
+        this.mobileMenuController = null;
 
         this.openMenu = document.getElementById("openMenu");
-
-        this.closeMenu = document.getElementById("closeMenu");
 
         this.audio = document.getElementById("ambientAudio");
 
@@ -211,153 +207,13 @@ OzoneApp.prototype.progress = function(){
     MOBILE MENU
 ==========================================================*/
 
-OzoneApp.prototype.syncMobileNav = function(){
-
-    const desktopLinks = document.querySelectorAll(".nav-links a");
-    const mobileNav = this.mobileMenu?.querySelector(".mobile-nav-links");
-
-    if(!desktopLinks.length || !mobileNav) return;
-
-    mobileNav.innerHTML = "";
-
-    desktopLinks.forEach(link => {
-
-        const item = document.createElement("a");
-        item.href = link.getAttribute("href") || "#";
-        if(link.dataset.i18n) item.dataset.i18n = link.dataset.i18n;
-        item.textContent = link.textContent.trim();
-        mobileNav.appendChild(item);
-
-    });
-
-    window.OZONE_I18N?.apply();
-
-};
-
-OzoneApp.prototype.openMobileMenu = function(){
-
-    if(!this.mobileMenu || !this.openMenu) return;
-
-    this.mobileMenu.classList.add("active");
-    this.mobileMenuBackdrop?.classList.add("active");
-    this.openMenu.setAttribute("aria-expanded", "true");
-    this.mobileMenu.setAttribute("aria-hidden", "false");
-    this.mobileMenuBackdrop?.setAttribute("aria-hidden", "false");
-    document.body.classList.add("menu-open");
-    document.body.style.overflow = "hidden";
-    this.lenis?.stop();
-
-};
-
-OzoneApp.prototype.closeMobileMenu = function(){
-
-    if(!this.mobileMenu || !this.openMenu) return;
-
-    this.mobileMenu.classList.remove("active");
-    this.mobileMenuBackdrop?.classList.remove("active");
-    this.openMenu.setAttribute("aria-expanded", "false");
-    this.mobileMenu.setAttribute("aria-hidden", "true");
-    this.mobileMenuBackdrop?.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("menu-open");
-    document.body.style.overflow = "";
-    this.lenis?.start();
-
-};
-
-OzoneApp.prototype.handleMobileNavClick = function(e, link){
-
-    const href = link.getAttribute("href") || "#";
-
-    this.closeMobileMenu();
-
-    if(href.startsWith("#")){
-
-        e.preventDefault();
-
-        if(href === "#" || href === ""){
-
-            if(this.lenis) this.lenis.scrollTo(0);
-            else window.scrollTo({ top:0, behavior:"smooth" });
-
-            return;
-
-        }
-
-        const target = document.querySelector(href);
-
-        if(!target) return;
-
-        if(this.lenis) this.lenis.scrollTo(target, { offset:-90 });
-        else target.scrollIntoView({ behavior:"smooth", block:"start" });
-
-    }
-
-};
-
 OzoneApp.prototype.mobileNavigation = function(){
 
-    if(!this.openMenu || !this.mobileMenu) return;
+    if(typeof OzoneMobileMenu === "undefined") return;
 
-    this.syncMobileNav();
+    this.mobileMenuController = new OzoneMobileMenu({ lenis:this.lenis });
 
-    const mobileNav = this.mobileMenu.querySelector(".mobile-nav-links");
-
-    this.openMenu.addEventListener("click", (e) => {
-
-        e.preventDefault();
-        e.stopPropagation();
-        this.openMobileMenu();
-
-    });
-
-    this.closeMenu?.addEventListener("click", (e) => {
-
-        e.preventDefault();
-        this.closeMobileMenu();
-
-    });
-
-    this.mobileMenuBackdrop?.addEventListener("click", () => this.closeMobileMenu());
-
-    mobileNav?.addEventListener("click", (e) => {
-
-        const link = e.target.closest("a");
-
-        if(!link || !mobileNav.contains(link)) return;
-
-        this.handleMobileNavClick(e, link);
-
-    });
-
-    // Mobile theme toggle mirrors the main themeToggle
-    const mobileTheme = document.getElementById("mobileThemeToggle");
-
-    if(mobileTheme){
-
-        mobileTheme.addEventListener("click", () => {
-
-            document.getElementById("themeToggle")?.click();
-
-        });
-
-    }
-
-    // Mobile language toggle mirrors i18n system
-    const mobileLang = document.getElementById("mobileLangToggle");
-
-    if(mobileLang){
-
-        mobileLang.addEventListener("click", () => {
-
-            window.OZONE_I18N?.toggle();
-
-            // Keep mobile button label in sync
-            mobileLang.textContent =
-                (localStorage.getItem("ozone-lang") === "am") ? "አማ | EN" : "EN | አማ";
-
-        });
-
-    }
+    this.mobileMenuController.init();
 
 };
 /*=========================================================
@@ -625,9 +481,9 @@ OzoneApp.prototype.shortcuts=function(){
 
     document.addEventListener("keydown",(e)=>{
 
-        if(e.key==="Escape" && this.mobileMenu?.classList.contains("active")){
+        if(e.key==="Escape"){
 
-            this.closeMobileMenu();
+            this.mobileMenuController?.close();
 
         }
 
