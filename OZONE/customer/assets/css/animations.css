@@ -1649,6 +1649,10 @@ header{
 
         .9s ease forwards;
 
+    pointer-events:none;
+
+    visibility:hidden;
+
 }
 
 
