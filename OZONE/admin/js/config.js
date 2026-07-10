@@ -18,7 +18,7 @@ const OZONE_CONFIG = Object.freeze({
     SESSION_TTL_MS:  8 * 60 * 60 * 1000,     // 8 hours
 
     // Redirect targets
-    LOGIN_PAGE:      "login.html",
+    LOGIN_PAGE:      "index.html",
     DASHBOARD_PAGE:  "dashboard.html",
 
     // Role constants
